@@ -22,17 +22,15 @@ describe('HomePage', () => {
     expect(html).not.toContain('opacity:0')
   })
 
-  // TODO(@the-abyss/ferdiiskandar): re-enable after migrating ai-prompt-box typing
-  // animation off setTimeout chain. Current pattern + React 19 act-compat + vi.useFakeTimers
-  // produces a recursive timer chain that exhausts the fakeTimers loopLimit. Tracked as
-  // follow-up to repo migration on 2026-05-07.
-  it.skip('renders a main landmark with the founder sections', () => {
+  it('renders a main landmark with the founder sections', () => {
     vi.useFakeTimers()
 
     render(<HomePage />)
 
     act(() => {
-      vi.runAllTimers()
+      // Advance 3s of fake time — enough to complete the typing animation
+      // (~2.2s) without infinite-looping under React 19 act-compat.
+      vi.advanceTimersByTime(3000)
     })
 
     expect(screen.getByRole('main')).toHaveAttribute('id', 'main-content')

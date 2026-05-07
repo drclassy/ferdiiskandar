@@ -152,26 +152,17 @@ export const PromptInputBox = React.forwardRef<HTMLDivElement, PromptInputBoxPro
     }, [input])
 
     React.useEffect(() => {
-      let nextIndex = 0
-      let typingTimer: number | null = null
-
-      const step = () => {
-        nextIndex += 1
-        setTypingLine(ABBY_TYPING_LINE.slice(0, nextIndex))
-
-        if (nextIndex < ABBY_TYPING_LINE.length) {
-          typingTimer = window.setTimeout(step, 24)
+      let index = 0
+      const intervalId = window.setInterval(() => {
+        index += 1
+        setTypingLine(ABBY_TYPING_LINE.slice(0, index))
+        if (index >= ABBY_TYPING_LINE.length) {
+          window.clearInterval(intervalId)
         }
-      }
-
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: reset+start typing animation on mount
-      setTypingLine('')
-      typingTimer = window.setTimeout(step, 24)
+      }, 24)
 
       return () => {
-        if (typingTimer) {
-          window.clearTimeout(typingTimer)
-        }
+        window.clearInterval(intervalId)
       }
     }, [])
 
