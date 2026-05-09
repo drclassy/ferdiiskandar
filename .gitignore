@@ -48,3 +48,7 @@ dist/
 
 # Agent operational memory
 .agent/
+.codex/
+.cursor/
+.playwright-cli/
+.turbo/
