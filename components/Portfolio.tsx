@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import CountUp from '@/components/CountUp'
 import { getRevealInitial, motionVariants, staggerContainer, motionViewport, transitions } from '@/lib/motion-variants'
+import SectionNumberMark from '@/components/SectionNumberMark'
 import { useMotionReady } from '@/lib/use-motion-ready'
 
 export default function Portfolio() {
@@ -73,15 +74,16 @@ export default function Portfolio() {
       <div className="fi-dossier-main">
         {/* Header */}
         <motion.header
-          className="fi-dossier-hero"
+          className="fi-dossier-hero fi-dossier-hero-numbered"
           initial={revealInitial}
           whileInView="visible"
           viewport={motionViewport}
           variants={mv?.fadeUp}
           transition={shouldReduce ? { duration: 0 } : transitions.medium}
         >
+          <SectionNumberMark number="04" />
           <div className="fi-dossier-titleblock">
-            <span className="fi-dossier-section">Section 03</span>
+            <span className="fi-dossier-section">Systems Registry</span>
             <h2 id="systems-dossier-title">
               Not products for show.
               <br />
@@ -133,7 +135,7 @@ export default function Portfolio() {
               <p className="fi-feature-subtitle">
                 Autonomous Admission &amp; Documentation Intelligence
               </p>
-              <p>
+              <p className="fi-feature-body-italic">
                 AADI mengumpulkan, memverifikasi, dan mendokumentasikan informasi pasien
                 secara otonom lintas sistem, sehingga friction saat admisi menurun dan
                 akurasi meningkat sejak awal proses.
@@ -250,17 +252,23 @@ export default function Portfolio() {
           </blockquote>
           <div aria-label="Registry summary" className="fi-proof-metrics">
             <div>
-              <strong>{shouldReduce ? 22 : <CountUp to={22} duration={1.6} />}</strong>
+              <strong>
+                <CountUp to={22} duration={1.6} />
+              </strong>
               <span>Systems</span>
               <small>Across healthcare, education, work, and digital surfaces</small>
             </div>
             <div>
-              <strong>{shouldReduce ? 4 : <CountUp to={4} duration={1.2} />}</strong>
+              <strong>
+                <CountUp to={4} duration={1.2} />
+              </strong>
               <span>Capability Domains</span>
               <small>Care, learning, coordination, and public experience</small>
             </div>
             <div>
-              <strong>{shouldReduce ? 1 : <CountUp to={1} duration={0.8} />}</strong>
+              <strong>
+                <CountUp to={1} duration={0.8} />
+              </strong>
               <span>Commitment</span>
               <small>Responsible intelligence in real operational conditions.</small>
             </div>

@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 import { getRevealInitial, motionVariants, staggerContainer, motionViewport, transitions } from '@/lib/motion-variants'
+import SectionNumberMark from '@/components/SectionNumberMark'
 import { useMotionReady } from '@/lib/use-motion-ready'
 
 const cells = [
@@ -62,11 +63,12 @@ export default function Impact() {
         variants={motionVariants.slideIn}
         transition={shouldReduce ? { duration: 0 } : transitions.medium}
       >
-        <div className="fi-kicker">Leadership Under Constraint</div>
+        <SectionNumberMark number="01" />
         <div>
+          <div className="fi-kicker">Leadership Under Constraint</div>
           <h2 className="fi-section-title">Leadership under real responsibility.</h2>
           <p className="fi-section-lead">
-            Ini adalah rekam jejak seorang founder-operator yang membangun intelligence
+            Ini adalah rekam jejak seorang founder-architect yang membangun intelligence
             systems di bawah tekanan institusional, kompleksitas operasional, dan tuntutan
             public trust.
           </p>

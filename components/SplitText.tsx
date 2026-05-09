@@ -35,10 +35,6 @@ export default function SplitText({
   const shouldReduce = useReducedMotion()
   const isMotionReady = useMotionReady()
 
-  if (shouldReduce) {
-    return <Tag className={className}>{text}</Tag>
-  }
-
   const units = mode === 'word' ? text.split(' ') : text.split('')
   const motionTagMap = { h1: motion.h1, h2: motion.h2, h3: motion.h3, p: motion.p, span: motion.span }
   const MotionTag = motionTagMap[Tag]
@@ -47,8 +43,8 @@ export default function SplitText({
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: stagger,
-        delayChildren: delay,
+        staggerChildren: shouldReduce ? 0 : stagger,
+        delayChildren: shouldReduce ? 0 : delay,
       },
     },
   }

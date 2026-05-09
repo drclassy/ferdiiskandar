@@ -5588,7 +5588,7 @@ button:focus-visible,
 .fi-cdss-route-card small,
 .fi-cdss-reasoning-card small,
 .fi-cdss-chip span {
-  font-family: "Fragment Mono", ui-monospace, monospace;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 10px;
   font-weight: 780;
   letter-spacing: 0.14em;
@@ -5914,7 +5914,7 @@ button:focus-visible,
 
 .fi-cdss-button {
   padding: 12px 16px;
-  font-family: "Fragment Mono", ui-monospace, monospace;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 11px;
   font-weight: 760;
   letter-spacing: 0.13em;
@@ -6035,7 +6035,7 @@ button:focus-visible,
 .fi-cdss-loading {
   margin-bottom: 14px;
   color: var(--fi-blue);
-  font-family: "Fragment Mono", ui-monospace, monospace;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 10px;
   font-weight: 760;
   letter-spacing: 0.14em;
@@ -6191,7 +6191,7 @@ button:focus-visible,
   padding: 0;
   border: 0;
   color: var(--fi-blue);
-  font-family: "Fragment Mono", ui-monospace, monospace;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 11px;
   font-style: italic;
   letter-spacing: 0.12em;
@@ -6232,7 +6232,7 @@ button:focus-visible,
 
 .fi-cdss-check,
 .fi-cdss-tag-dot {
-  font-family: "Fragment Mono", ui-monospace, monospace;
+  font-family: Georgia, "Times New Roman", serif;
   color: var(--fi-blue);
 }
 
@@ -6322,7 +6322,7 @@ button:focus-visible,
   margin-bottom: 12px;
   padding-bottom: 10px;
   border-bottom: 1px dashed rgba(17, 19, 24, 0.12);
-  font-family: "Fragment Mono", ui-monospace, monospace;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 10px;
   font-weight: 760;
   letter-spacing: 0.14em;
@@ -6387,7 +6387,7 @@ button:focus-visible,
 }
 
 .fi-cdss-trajectory-pill strong {
-  font-family: "Fragment Mono", ui-monospace, monospace;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 10px;
   color: var(--fi-blue);
   letter-spacing: 0.12em;
@@ -6404,7 +6404,7 @@ button:focus-visible,
 
 .fi-cdss-exam-row span {
   color: var(--fi-muted);
-  font-family: "Fragment Mono", ui-monospace, monospace;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 10px;
   font-weight: 760;
   letter-spacing: 0.12em;
@@ -6436,7 +6436,7 @@ button:focus-visible,
 .fi-cdss-subhead {
   margin-bottom: 12px;
   color: var(--fi-soft);
-  font-family: "Fragment Mono", ui-monospace, monospace;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 10px;
   font-weight: 760;
   letter-spacing: 0.14em;
@@ -8073,6 +8073,7 @@ button:focus-visible,
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-vital-card,
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-flag-card,
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-side-table,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-lab-panel,
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-lab-row,
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-result-card,
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-route-card,
@@ -8084,6 +8085,8 @@ button:focus-visible,
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-mini-list,
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-lab-toggle,
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-trajectory,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-insight,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-composer,
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-evidence-idle-note {
   border-color: rgba(236, 231, 215, 0.14) !important;
 }
@@ -8107,11 +8110,25 @@ button:focus-visible,
 }
 
 .fi-cdss-sim-source {
+  font-family: Georgia, "Times New Roman", serif;
   --fi-cdss-type-title-size: var(--fi-editorial-section-title-size);
   --fi-cdss-type-title-line: var(--fi-editorial-section-title-line-height);
   --fi-cdss-type-title-track: var(--fi-editorial-section-title-tracking);
   --fi-cdss-type-body-size: var(--fi-editorial-body-size);
   --fi-cdss-type-body-line: var(--fi-editorial-body-line-height);
+}
+
+.fi-cdss-sim-source,
+.fi-cdss-sim-source *:not(svg):not(path):not(line):not(circle):not(polyline) {
+  font-family: Georgia, "Times New Roman", serif !important;
+}
+
+.fi-cdss-sim-source button,
+.fi-cdss-sim-source input,
+.fi-cdss-sim-source select,
+.fi-cdss-sim-source textarea,
+.fi-cdss-sim-source ::placeholder {
+  font-family: Georgia, "Times New Roman", serif !important;
 }
 
 .fi-cdss-sim-source .fi-section-title {
@@ -8196,14 +8213,74 @@ button:focus-visible,
 .fi-cdss-sim-source .fi-cdss-status,
 .fi-cdss-sim-source .fi-cdss-meta span,
 .fi-cdss-sim-source .fi-cdss-meta-item,
-.fi-cdss-sim-source .fi-cdss-rail-summary span,
-.fi-cdss-sim-source .fi-cdss-rail-mini-row span,
 .fi-cdss-sim-source .fi-cdss-tag-row small,
 .fi-cdss-sim-source .fi-cdss-subhead,
 .fi-cdss-sim-source .fi-cdss-button,
 .fi-cdss-sim-source .fi-cdss-inline-button {
   text-transform: uppercase;
   letter-spacing: 0.08em !important;
+}
+
+.fi-cdss-sim-source .fi-cdss-rail-summary span,
+.fi-cdss-sim-source .fi-cdss-rail-head,
+.fi-cdss-sim-source .fi-cdss-rail-mini-row span,
+.fi-cdss-sim-source .fi-cdss-rail-mini-row strong,
+.fi-cdss-sim-source .fi-cdss-rail-panel .fi-cdss-empty {
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: var(--fi-cdss-type-body-size) !important;
+  line-height: var(--fi-cdss-type-body-line) !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+  font-style: normal !important;
+}
+
+.fi-cdss-sim-source .fi-cdss-rail-head,
+.fi-cdss-sim-source .fi-cdss-rail-mini-row span,
+.fi-cdss-sim-source .fi-cdss-rail-mini-row strong {
+  font-weight: 400 !important;
+}
+
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-lab-panel,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-insight,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-composer {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-summary span,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-head,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-mini-row span,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-mini-row strong,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-panel .fi-cdss-empty,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-lab-row strong,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-lab-row small,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-subhead,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-trajectory-head span,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-trajectory-intro,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-insight,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-composer,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-composer::placeholder {
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: var(--fi-cdss-type-body-size) !important;
+  line-height: var(--fi-cdss-type-body-line) !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+  font-style: normal !important;
+}
+
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-head,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-mini-row span,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-mini-row strong,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-lab-row strong,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-lab-row small,
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-subhead {
+  font-weight: 400 !important;
+}
+
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-composer::placeholder {
+  color: rgba(236, 231, 215, 0.44) !important;
 }
 
 @keyframes fi-cdss-source-pulse {

@@ -9,21 +9,19 @@ export const siteIdentity = {
 export const sectionIds = [
   { id: 'top', label: 'Top' },
   { id: 'impact', label: 'Impact' },
-  { id: 'portfolio', label: 'Systems' },
   { id: 'expertise', label: 'Thinking' },
-  { id: 'intelligence', label: 'Brief' },
-  { id: 'vision', label: 'Vision' },
-  { id: 'field-notes', label: 'Notes' },
+  { id: 'sentra-sim', label: 'Simulation' },
+  { id: 'portfolio', label: 'Systems' },
+  { id: 'story-sentra', label: 'Story' },
   { id: 'contact', label: 'Contact' },
 ] as const
 
 export const primaryNav = [
   { label: 'About', href: '/about' },
-  { label: 'Impact', href: '/#impact' },
-  { label: 'Systems', href: '/#portfolio' },
-  { label: 'Thinking', href: '/#expertise' },
-  { label: 'Brief', href: '/#intelligence' },
-  { label: 'Vision', href: '/#vision' },
+  { label: 'Works', href: '/works' },
+  { label: 'Notes', href: '/notes' },
+  { label: 'Speaking', href: '/speaking' },
+  { label: 'CV', href: '/cv' },
   { label: 'Contact', href: '/#contact' },
 ] as const
 

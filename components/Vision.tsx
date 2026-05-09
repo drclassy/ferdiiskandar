@@ -35,20 +35,14 @@ export default function Vision() {
   return (
     <section className="fi-section" id="vision">
       <div className="fi-vision">
-        {shouldReduce ? (
-          <h2 className="fi-vision-title">
-            Bridging Human Care with Artificial Intelligence.
-          </h2>
-        ) : (
-          <SplitText
-            text="Bridging Human Care with Artificial Intelligence."
-            mode="word"
-            stagger={0.07}
-            delay={0.1}
-            className="fi-vision-title"
-            as="h2"
-          />
-        )}
+        <SplitText
+          text="Bridging Human Care with Artificial Intelligence."
+          mode="word"
+          stagger={0.07}
+          delay={0.1}
+          className="fi-vision-title"
+          as="h2"
+        />
 
         <motion.div
           className="fi-vision-copy"

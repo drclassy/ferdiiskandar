@@ -1,151 +1,160 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
+import { LazyMotion, domAnimation } from 'framer-motion'
 import Link from 'next/link'
-import { motion, useAnimation, useReducedMotion } from 'framer-motion'
-import HeroChatColumn from '@/components/HeroChatColumn'
+import { FadeIn } from '@/components/HeroMotion'
+import { useMotionReady } from '@/lib/use-motion-ready'
 
-const heroLeftVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.14, delayChildren: 0.15 },
-  },
-}
+const conceptLines = [
+  'Clinical Trajectory',
+  'Neuro-Symbolic Reasoning',
+  'Clinical Metacognition',
+  'Preventive Healthcare Intelligence',
+  'AI-Native Hospital Systems',
+] as const
 
-const heroItemVariant = {
-  hidden: { y: 32, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
-  },
-}
-
-const identityStripVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-}
-
-const identityItems = [
+const heroSignals = [
   {
-    num: '01',
-    title: 'Healthcare Intelligence',
-    desc: 'Sistem klinis, care yang akuntabel, dan transformasi institusional',
+    label: 'Primary lens',
+    value: 'Preventive healthcare intelligence',
   },
   {
-    num: '02',
-    title: 'Education Intelligence',
-    desc: 'Pendampingan belajar, dukungan riset, dan structured knowledge work',
+    label: 'Operating mode',
+    value: 'Founder-led system architecture',
   },
   {
-    num: '03',
-    title: 'Digital Experience Systems',
-    desc: 'Website editorial, platform publik, dan permukaan digital berkepercayaan tinggi',
+    label: 'Public outcome',
+    value: 'Clearer decisions and calmer care',
   },
-  {
-    num: '04',
-    title: 'Workforce Intelligence',
-    desc: 'Manajemen karyawan, coordination systems, dan visibilitas operasional',
-  },
-]
-
-export function getHeroMotionState(isMotionReady: boolean, shouldReduce: boolean | null) {
-  if (!isMotionReady || shouldReduce) {
-    return {
-      leftInitial: false as const,
-      leftAnimate: 'visible' as const,
-      asideInitial: false as const,
-      asideAnimate: { x: 0, opacity: 1 },
-    }
-  }
-
-  return {
-    leftInitial: 'hidden' as const,
-    leftAnimate: null,
-    asideInitial: { x: 60, opacity: 0 },
-    asideAnimate: null,
-  }
-}
+] as const
 
 export default function Hero() {
-  const shouldReduce = useReducedMotion()
-  const leftControls = useAnimation()
-  const asideControls = useAnimation()
-  const [isMotionReady, setIsMotionReady] = useState(false)
-  const heroMotionState = getHeroMotionState(isMotionReady, shouldReduce)
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: hydration-safe motion gate before triggering framer-motion controls
-    setIsMotionReady(true)
-
-    if (shouldReduce) {
-      leftControls.set('visible')
-      asideControls.set({ x: 0, opacity: 1 })
-    } else {
-      leftControls.start('visible')
-      asideControls.start({
-        x: 0,
-        opacity: 1,
-        transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.3 },
-      })
-    }
-  }, [leftControls, asideControls, shouldReduce])
+  const isMotionReady = useMotionReady()
 
   return (
-    <section className="fi-hero">
-      <motion.div
-        initial={heroMotionState.leftInitial}
-        animate={heroMotionState.leftAnimate ?? leftControls}
-        variants={heroLeftVariants}
-      >
-        <motion.div className="fi-eyebrow" variants={heroItemVariant}>
-          Founder / Systems Architect / Institutional Operator
-        </motion.div>
-        <motion.h1 variants={heroItemVariant}>
-          Building intelligence systems for
-          <br />
-          <em>high-responsibility sectors.</em>
-        </motion.h1>
-        <motion.p className="fi-hero-thesis" variants={heroItemVariant}>
-          Founder, systems architect, dan institutional operator yang membangun applied
-          intelligence di sektor healthcare, education, workforce, dan digital experience.
-        </motion.p>
-        <motion.div
-          aria-label="Professional identity"
-          className="fi-identity-strip"
-          variants={identityStripVariants}
-        >
-          {identityItems.map((id) => (
-            <motion.div className="fi-identity-item" key={id.num} variants={heroItemVariant}>
-              <span className="fi-num">{id.num}</span>
-              <strong>{id.title}</strong>
-              <span>{id.desc}</span>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
+    <LazyMotion features={domAnimation}>
+      <section aria-labelledby="hero-title" className="fi-hero fi-home-dossier-hero fi-hero-clean">
+        <div className="fi-hero-editorial">
+          <FadeIn
+            as="div"
+            className="fi-hero-editorial-row fi-hero-editorial-row-intro"
+            delay={0.08}
+            distance={16}
+            duration={0.6}
+            motionReady={isMotionReady}
+          >
+            <div className="fi-hero-headline-group">
+              <p className="fi-hero-identity-tag">
+                Physician · 12-Year Hospital CEO · Founder of Sentra Artificial Intelligence
+              </p>
+              <h1 id="hero-title" className="fi-hero-headline">
+                <span className="fi-hero-headline-line fi-enter-word fi-enter-word-1">dr Ferdi</span>
+                <span className="fi-hero-headline-line fi-enter-word fi-enter-word-2">Iskandar</span>
+                <span className="fi-hero-headline-line fi-hero-headline-line-accent fi-enter-word fi-enter-word-3">
+                  Human—AI
+                </span>
+                <span className="fi-hero-headline-line fi-enter-word fi-enter-word-4">Architect</span>
+              </h1>
+            </div>
+            <div className="fi-hero-editorial-rail">
+              <DotLottieReact
+                autoplay
+                className="fi-hero-lottie"
+                layout={{ fit: 'contain', align: [0.5, 0.5] }}
+                loop
+                renderConfig={{ autoResize: true }}
+                src="/hero.lottie"
+              />
+              <div className="fi-hero-editorial-copy">
+                <p className="fi-hero-editorial-note fi-hero-editorial-note-primary">
+                  I build human-centered AI systems for healthcare, where clinical reasoning,
+                  preventive intelligence, and lived hospital leadership operate as one surface.
+                </p>
+                <div className="fi-hero-cta-group">
+                  <Link className="fi-hero-cta fi-hero-cta-primary" href="/works">
+                    Open Selected Systems
+                  </Link>
+                  <Link className="fi-hero-cta fi-hero-cta-secondary" href="/#contact">
+                    Start a Conversation
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
 
-      <motion.aside
-        className="fi-hero-copy"
-        initial={heroMotionState.asideInitial}
-        animate={heroMotionState.asideAnimate ?? asideControls}
-      >
-        <blockquote className="fi-quote">
-          &ldquo;Sistem terbaik adalah yang bekerja dalam diam.&rdquo;
-          <small>— dr. Ferdi Iskandar</small>
-        </blockquote>
-        <div className="fi-hero-chat-column">
-          <HeroChatColumn />
+          <FadeIn
+            as="div"
+            className="fi-hero-editorial-row fi-hero-editorial-row-capability"
+            delay={0.18}
+            distance={18}
+            duration={0.62}
+            motionReady={isMotionReady}
+            >
+              <p className="fi-hero-quote fi-enter-list-item" style={{ animationDelay: '0.42s' }}>
+                The future of healthcare is not only to treat disease — but to understand
+                where a patient is heading before deterioration becomes critical.
+              </p>
+            </FadeIn>
+
+          <FadeIn
+            as="div"
+            className="fi-hero-editorial-row fi-hero-editorial-row-signal"
+            delay={0.28}
+            distance={20}
+            duration={0.62}
+            motionReady={isMotionReady}
+          >
+            <div className="fi-hero-signal-ledger">
+              <p className="fi-hero-signal-ledger-label">Current operating fields</p>
+              <div className="fi-hero-concept-strip">
+                <ul>
+                  {conceptLines.map((line, index) => (
+                    <li
+                      key={line}
+                      className="fi-enter-list-item"
+                      style={{ animationDelay: `${0.58 + index * 0.06}s` }}
+                    >
+                      {line}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <ul className="fi-hero-signal-list">
+                {heroSignals.map((signal, index) => (
+                  <li
+                    key={signal.label}
+                    className="fi-enter-list-item"
+                    style={{ animationDelay: `${0.88 + index * 0.08}s` }}
+                  >
+                    <span>{signal.label}</span>
+                    <strong>{signal.value}</strong>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <Link aria-label="Jump to impact section" className="fi-hero-orbit" href="/#impact">
+              <svg className="fi-hero-orbit-svg" fill="none" viewBox="0 0 120 120">
+                <defs>
+                  <path
+                    d="M 60,60 m -42,0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0"
+                    id="fi-hero-orbit-path"
+                  />
+                </defs>
+                <circle cx="60" cy="60" r="36" stroke="currentColor" strokeOpacity="0.35" />
+                <circle cx="60" cy="60" r="4" fill="currentColor" />
+                <text>
+                  <textPath href="#fi-hero-orbit-path" startOffset="0%">
+                    Enter dossier • enter dossier •
+                  </textPath>
+                </text>
+              </svg>
+            </Link>
+          </FadeIn>
+
         </div>
-        <div className="fi-hero-actions">
-          <Link className="fi-button" href="#vision">
-            Baca visinya
-          </Link>
-          <Link className="fi-button secondary" href="#portfolio">
-            Jelajahi systems
-          </Link>
-        </div>
-      </motion.aside>
-    </section>
+      </section>
+    </LazyMotion>
   )
 }
