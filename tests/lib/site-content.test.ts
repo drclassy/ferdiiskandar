@@ -1,51 +1,48 @@
-import { describe, expect, it } from 'vitest'
 import {
   contactCards,
   footerMeta,
   primaryNav,
   sectionIds,
+  siteIdentity,
   socialLinks,
   thinkingMeta,
 } from '@/lib/site-content'
 
 describe('site content', () => {
-  it('defines unique section ids for the homepage architecture', () => {
-    const ids = sectionIds.map((section) => section.id)
-
-    expect(ids).toEqual([
-      'top',
-      'impact',
-      'portfolio',
-      'expertise',
-      'intelligence',
-      'vision',
-      'field-notes',
-      'contact',
+  it('defines the current homepage reading order', () => {
+    expect(sectionIds).toEqual([
+      { id: 'top', label: 'Top' },
+      { id: 'impact', label: 'Impact' },
+      { id: 'expertise', label: 'Thinking' },
+      { id: 'sentra-sim', label: 'Simulation' },
+      { id: 'portfolio', label: 'Systems' },
+      { id: 'story-sentra', label: 'Story' },
+      { id: 'contact', label: 'Contact' },
     ])
-    expect(new Set(ids).size).toBe(ids.length)
   })
 
-  it('exposes route-ready navigation while keeping contact targets trust-safe', () => {
-    expect(primaryNav[0]).toEqual({ label: 'About', href: '/about' })
-    expect(primaryNav.slice(1).every((item) => item.href.startsWith('/#'))).toBe(true)
-    expect(contactCards.some((card) => card.href === '#')).toBe(false)
-    expect(contactCards[0]?.label).toBe('Strategic Collaboration')
+  it('uses route-based navigation for the current public surfaces', () => {
+    expect(primaryNav).toEqual([
+      { label: 'About', href: '/about' },
+      { label: 'Works', href: '/works' },
+      { label: 'Notes', href: '/notes' },
+      { label: 'Speaking', href: '/speaking' },
+      { label: 'CV', href: '/cv' },
+      { label: 'Contact', href: '/#contact' },
+    ])
   })
 
-  it('removes stale hard-coded time labels from the thinking surface', () => {
-    expect(thinkingMeta.editionLabel).toBe('Current Edition')
-    expect(thinkingMeta.lastUpdatedLabel).toBe('Currently evolving')
-  })
-
-  it('uses a dynamic footer year', () => {
-    expect(footerMeta.year).toBe(new Date().getFullYear())
-  })
-
-  it('defines direct social and contact links without placeholders', () => {
+  it('keeps contact cards intentionally non-clickable while public links stay direct', () => {
+    expect(contactCards.every((card) => card.href === null)).toBe(true)
     expect(socialLinks).toHaveLength(6)
     expect(
       socialLinks.every((link) => link.href.startsWith('https://') || link.href.startsWith('mailto:')),
     ).toBe(true)
-    expect(socialLinks.map((link) => link.href)).not.toContain('#')
+  })
+
+  it('keeps the current founder identity metadata stable', () => {
+    expect(siteIdentity.headline).toBe('Augmented Intelligence Architect')
+    expect(thinkingMeta.editionLabel).toBe('Current Edition')
+    expect(footerMeta.year).toBe(new Date().getFullYear())
   })
 })
