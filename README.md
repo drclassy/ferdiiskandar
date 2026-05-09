@@ -1,61 +1,51 @@
+# Abby Personal AI Assistant Kit
 
-# Ferdi Iskandar Site
+Kit ini berisi konfigurasi, persona, relationship layer, system prompt, aset visual, dan knowledge base awal untuk Abby — asisten AI pribadi dr Ferdi Iskandar.
 
-A production-focused Next.js 15 and React 19 website with an AI chat endpoint and a component-level test suite.
+## Struktur
 
-## Architecture Overview
+```txt
+src/config/
+  abby.config.json
+  abby.persona.json
+  abby.relationship.json
 
-- `app/`: Next.js App Router pages, metadata routes, and API routes.
-- `components/`: UI composition and page sections.
-- `lib/`: Content modules, metadata, and shared utilities.
-- `tests/`: Vitest + Testing Library tests for pages, components, and scripts.
-- `scripts/`: Runtime guard scripts for Next.js command safety.
+src/prompts/
+  abby.system-prompt.md
 
-## Prerequisites
+content/abby/
+  personal-profile.md
+  professional-journey.md
+  speaking-profile.md
+  thought-leadership.md
+  projects-and-works.md
+  media-kit.md
+  contact-and-collaboration.md
+  faq.md
 
-- Node.js 22 LTS or newer
-- npm 10+
+public/assets/abby/
+  abby-main.png
+  abby-avatar.png
 
-## Installation
-
-```bash
-npm install
+docs/
+  ABBY_PRODUCT_SPEC.md
+  ABBY_CODEX_IMPLEMENTATION_BRIEF.md
 ```
 
-## Configuration
+## Prinsip Utama
 
-1. Copy `.env.example` to `.env.local`.
-2. Set `NVIDIA_API_KEY` for the chat API route.
+Abby bukan chatbot generik. Abby adalah asisten pribadi digital yang harus terasa hidup, hangat, profesional, sedikit witty, dan mampu membangun hubungan dari percakapan singkat.
 
-## Usage
+## MVP Recommendation
 
-```bash
-npm run dev
-```
+Mulai dengan:
+1. Chat UI sederhana.
+2. Knowledge base berbasis Markdown.
+3. System prompt Abby.
+4. Visitor mode selector.
+5. Suggested questions.
+6. CTA routing.
+7. Safety boundary untuk pertanyaan medis personal.
 
-## Testing
+Jangan mulai dari voice, CRM kompleks, diagnosis, atau multi-agent.
 
-```bash
-npm run lint
-npm run typecheck
-npm test
-```
-
-## Deployment
-
-- Build with `npm run build`.
-- Start with `npm run start`.
-- Recommended runtime: Node.js 22 LTS.
-
-## Contributing
-
-See `CONTRIBUTING.md` and `COMMIT_CONVENTION.md`.
-
-## License
-
-MIT (`LICENSE`).
-
-## Maintainer
-
-- Repository Maintainer: Project owner
-- Security contact: `SECURITY.md`
