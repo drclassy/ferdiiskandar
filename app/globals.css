@@ -7308,7 +7308,7 @@ button:focus-visible,
 }
 
 .fi-cdss-sim-source .fi-cdss-rail-summary {
-  padding-left: 26px;
+  padding-left: 20px;
 }
 
 .fi-cdss-sim-source .fi-cdss-rail-summary span {
@@ -7322,17 +7322,17 @@ button:focus-visible,
 }
 
 .fi-cdss-sim-source .fi-cdss-rail-mini-list {
-  margin-bottom: 14px;
-  border-top: 1px solid rgba(23, 20, 15, 0.1);
+  margin-bottom: 10px;
+  border-top: 1px solid rgba(23, 20, 15, 0.08);
 }
 
 .fi-cdss-sim-source .fi-cdss-rail-mini-row {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 14px;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(23, 20, 15, 0.08);
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(23, 20, 15, 0.06);
 }
 
 .fi-cdss-sim-source .fi-cdss-rail-mini-row span {
@@ -7773,8 +7773,8 @@ button:focus-visible,
 }
 
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-panel {
-  min-height: 138px;
-  padding-left: 26px;
+  min-height: 0;
+  padding: 18px 18px 16px 20px;
 }
 
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-panel::after {
@@ -7785,14 +7785,14 @@ button:focus-visible,
   content: "";
   position: absolute;
   left: 0;
-  top: 24px;
-  bottom: 24px;
-  width: 3px;
+  top: 18px;
+  bottom: 18px;
+  width: 1px;
   border-radius: 999px;
   background: linear-gradient(
     180deg,
-    rgba(239, 111, 46, 0.92) 0%,
-    rgba(239, 111, 46, 0.24) 100%
+    rgba(239, 111, 46, 0.72) 0%,
+    rgba(239, 111, 46, 0.16) 100%
   );
 }
 
@@ -7855,7 +7855,7 @@ button:focus-visible,
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-mini-row,
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-table-row,
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-exam-row {
-  border-color: rgba(236, 231, 215, 0.14);
+  border-color: rgba(236, 231, 215, 0.08);
 }
 
 .fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-mini-row span {
@@ -7905,6 +7905,33 @@ button:focus-visible,
 .fi-cdss-idle-row,
 .fi-cdss-rail-panel-idle {
   opacity: 0.96;
+}
+
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail {
+  gap: 18px;
+}
+
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-summary span {
+  font-size: 0.9rem !important;
+  line-height: 1.3 !important;
+}
+
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-head {
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+}
+
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-tag-list {
+  gap: 8px;
+}
+
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-tag-row {
+  padding: 7px 0;
+}
+
+.fi-cdss-sim-source.fi-cdss-sim-hero-dark .fi-cdss-rail-panel .fi-cdss-empty {
+  margin-top: 2px;
+  line-height: 1.55 !important;
 }
 
 .fi-cdss-evidence-idle-note {
