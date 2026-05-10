@@ -30,12 +30,17 @@ export function toAuditProjectPath(projectDir, workspaceRoot) {
 
 export function advisoryAffectsProject(advisory, auditProjectPath) {
   return advisory.findings?.some((finding) =>
-    finding.paths?.some((findingPath) => findingPath.startsWith(`${auditProjectPath} >`) || findingPath === auditProjectPath),
+    finding.paths?.some(
+      (findingPath) =>
+        findingPath.startsWith(`${auditProjectPath} >`) || findingPath === auditProjectPath,
+    ),
   )
 }
 
 export function collectRelevantAdvisories(report, auditProjectPath) {
-  return Object.values(report.advisories ?? {}).filter((advisory) => advisoryAffectsProject(advisory, auditProjectPath))
+  return Object.values(report.advisories ?? {}).filter((advisory) =>
+    advisoryAffectsProject(advisory, auditProjectPath),
+  )
 }
 
 function summarizeBySeverity(advisories) {
@@ -57,11 +62,15 @@ function run() {
   const workspaceRoot = findWorkspaceRoot(process.cwd())
 
   if (!workspaceRoot) {
-    console.error('Unable to find pnpm-lock.yaml in this project ancestry. security:deps requires a pnpm workspace root.')
+    console.error(
+      'Unable to find pnpm-lock.yaml in this project ancestry. security:deps requires a pnpm workspace root.',
+    )
     process.exit(1)
   }
 
-  const auditLevelArg = process.argv.slice(2).find((arg) => arg.startsWith('--audit-level=')) ?? `--audit-level=${DEFAULT_AUDIT_LEVEL}`
+  const auditLevelArg =
+    process.argv.slice(2).find((arg) => arg.startsWith('--audit-level=')) ??
+    `--audit-level=${DEFAULT_AUDIT_LEVEL}`
   const auditResult = spawnSync('pnpm', ['audit', '--json', '--ignore-workspace', auditLevelArg], {
     cwd: workspaceRoot,
     encoding: 'utf8',
@@ -87,7 +96,9 @@ function run() {
   const relevantAdvisories = collectRelevantAdvisories(report, auditProjectPath)
 
   if (relevantAdvisories.length === 0) {
-    console.log(`No pnpm audit advisories at or above ${auditLevelArg.split('=')[1]} affect ${auditProjectPath}.`)
+    console.log(
+      `No pnpm audit advisories at or above ${auditLevelArg.split('=')[1]} affect ${auditProjectPath}.`,
+    )
     process.exit(0)
   }
 
@@ -96,7 +107,10 @@ function run() {
 
   for (const advisory of relevantAdvisories) {
     const affectedPaths = advisory.findings.flatMap((finding) =>
-      finding.paths.filter((findingPath) => findingPath.startsWith(`${auditProjectPath} >`) || findingPath === auditProjectPath),
+      finding.paths.filter(
+        (findingPath) =>
+          findingPath.startsWith(`${auditProjectPath} >`) || findingPath === auditProjectPath,
+      ),
     )
 
     console.error('')

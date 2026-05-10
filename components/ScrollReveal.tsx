@@ -1,7 +1,8 @@
 'use client'
 
-import type { ReactNode } from 'react'
 import { LazyMotion, domAnimation, m, useReducedMotion } from 'framer-motion'
+import type { ReactNode } from 'react'
+
 import { getRevealInitial } from '@/lib/motion-variants'
 import { useMotionReady } from '@/lib/use-motion-ready'
 
@@ -19,7 +20,11 @@ export default function ScrollReveal({ children }: ScrollRevealProps) {
     <LazyMotion features={domAnimation}>
       <m.div
         initial={revealInitial}
-        transition={isMotionReady && !shouldReduceMotion ? { duration: 0.68, ease: [0.16, 1, 0.3, 1] } : undefined}
+        transition={
+          isMotionReady && !shouldReduceMotion
+            ? { duration: 0.68, ease: [0.16, 1, 0.3, 1] }
+            : undefined
+        }
         viewport={{ once: true, amount: 0.18 }}
         whileInView={revealAnimate}
       >

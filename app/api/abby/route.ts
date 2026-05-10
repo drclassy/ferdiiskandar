@@ -1,4 +1,5 @@
-import { NextRequest } from 'next/server'
+import { type NextRequest } from 'next/server'
+
 import { ABBY_KNOWLEDGE, ABBY_SYSTEM_PROMPT } from '@/lib/abby-knowledge'
 
 export const runtime = 'nodejs'
@@ -36,12 +37,14 @@ function resolveProvider(): ProviderConfig | { error: string } {
 
   if (provider === 'openai') {
     const apiKey = process.env.OPENAI_API_KEY
-    if (!apiKey) return { error: isDev ? 'Missing OPENAI_API_KEY for AI_PROVIDER=openai' : ERR_CONFIG }
+    if (!apiKey)
+      return { error: isDev ? 'Missing OPENAI_API_KEY for AI_PROVIDER=openai' : ERR_CONFIG }
     return { baseUrl: 'https://api.openai.com/v1', apiKey, model }
   }
 
   const apiKey = process.env.DEEPSEEK_API_KEY
-  if (!apiKey) return { error: isDev ? 'Missing DEEPSEEK_API_KEY for AI_PROVIDER=deepseek' : ERR_CONFIG }
+  if (!apiKey)
+    return { error: isDev ? 'Missing DEEPSEEK_API_KEY for AI_PROVIDER=deepseek' : ERR_CONFIG }
   return { baseUrl: process.env.DEEPSEEK_BASE_URL ?? 'https://api.deepseek.com', apiKey, model }
 }
 
@@ -114,12 +117,22 @@ export async function POST(request: NextRequest) {
   try {
     const clientKey = getClientKey(request)
     if (isRateLimited(clientKey)) {
-      return problem(429, 'Rate Limit Exceeded', 'Terlalu banyak permintaan. Silakan coba beberapa saat lagi.', '/v1/problems/rate-limit-exceeded')
+      return problem(
+        429,
+        'Rate Limit Exceeded',
+        'Terlalu banyak permintaan. Silakan coba beberapa saat lagi.',
+        '/v1/problems/rate-limit-exceeded',
+      )
     }
 
     if ('error' in PROVIDER) {
       console.error('[Abby API] Provider config error:', PROVIDER.error)
-      return problem(500, 'Server Configuration Error', PROVIDER.error, '/v1/problems/server-configuration')
+      return problem(
+        500,
+        'Server Configuration Error',
+        PROVIDER.error,
+        '/v1/problems/server-configuration',
+      )
     }
 
     const body = await request.json()
@@ -130,15 +143,30 @@ export async function POST(request: NextRequest) {
     }
 
     if (!message || typeof message !== 'string') {
-      return problem(400, 'Invalid Request', 'Field "message" harus berupa string.', '/v1/problems/invalid-request')
+      return problem(
+        400,
+        'Invalid Request',
+        'Field "message" harus berupa string.',
+        '/v1/problems/invalid-request',
+      )
     }
 
     const trimmed = message.trim()
     if (trimmed.length === 0) {
-      return problem(400, 'Empty Message', 'Pesan tidak boleh kosong.', '/v1/problems/empty-message')
+      return problem(
+        400,
+        'Empty Message',
+        'Pesan tidak boleh kosong.',
+        '/v1/problems/empty-message',
+      )
     }
     if (trimmed.length > 2000) {
-      return problem(400, 'Message Too Long', 'Pesan terlalu panjang. Maks 2000 karakter.', '/v1/problems/message-too-long')
+      return problem(
+        400,
+        'Message Too Long',
+        'Pesan terlalu panjang. Maks 2000 karakter.',
+        '/v1/problems/message-too-long',
+      )
     }
 
     const safeHistory: HistoryItem[] = Array.isArray(history)
@@ -190,18 +218,26 @@ export async function POST(request: NextRequest) {
           502,
           'Upstream Authentication Error',
           isDev
-            ? upstreamMessage ?? 'Provider AI menolak kredensial atau akses model. Periksa DEEPSEEK_API_KEY / OPENAI_API_KEY dan model yang dipakai.'
+            ? (upstreamMessage ??
+                'Provider AI menolak kredensial atau akses model. Periksa DEEPSEEK_API_KEY / OPENAI_API_KEY dan model yang dipakai.')
             : 'Layanan AI tidak tersedia saat ini. Silakan coba lagi.',
           '/v1/problems/upstream-authentication',
         )
       }
       if (upstreamResponse.status === 429) {
-        return problem(429, 'Upstream Rate Limited', 'Layanan AI sedang sibuk. Silakan coba beberapa saat lagi.', '/v1/problems/upstream-rate-limited')
+        return problem(
+          429,
+          'Upstream Rate Limited',
+          'Layanan AI sedang sibuk. Silakan coba beberapa saat lagi.',
+          '/v1/problems/upstream-rate-limited',
+        )
       }
       return problem(
         502,
         'Upstream Service Error',
-        isDev && upstreamMessage ? upstreamMessage : 'Layanan AI tidak tersedia saat ini. Silakan coba lagi.',
+        isDev && upstreamMessage
+          ? upstreamMessage
+          : 'Layanan AI tidak tersedia saat ini. Silakan coba lagi.',
         '/v1/problems/upstream-service-error',
       )
     }
@@ -215,10 +251,19 @@ export async function POST(request: NextRequest) {
     return Response.json({ reply }, { headers: JSON_HEADERS })
   } catch (error) {
     if (error instanceof DOMException && error.name === 'TimeoutError') {
-      return problem(504, 'Gateway Timeout', 'Respons AI terlalu lama. Silakan coba lagi.', '/v1/problems/gateway-timeout')
+      return problem(
+        504,
+        'Gateway Timeout',
+        'Respons AI terlalu lama. Silakan coba lagi.',
+        '/v1/problems/gateway-timeout',
+      )
     }
     console.error('[Abby API] Unexpected error:', error)
-    return problem(500, 'Internal Server Error', 'Terjadi kesalahan internal. Silakan coba lagi.', '/v1/problems/internal-server-error')
+    return problem(
+      500,
+      'Internal Server Error',
+      'Terjadi kesalahan internal. Silakan coba lagi.',
+      '/v1/problems/internal-server-error',
+    )
   }
 }
-

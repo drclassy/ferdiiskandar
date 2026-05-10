@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 import type { Transition } from 'framer-motion'
+
 import { getRevealInitial, motionVariants, motionViewport } from '@/lib/motion-variants'
 import { useMotionReady } from '@/lib/use-motion-ready'
 

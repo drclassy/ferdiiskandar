@@ -1,5 +1,6 @@
+import { Fragment_Mono, Inter, JetBrains_Mono } from 'next/font/google'
 import type { ReactNode } from 'react'
-import { Fragment_Mono, Inter } from 'next/font/google'
+
 import { buildSiteMetadata } from '@/lib/site-metadata'
 import './globals.css'
 
@@ -16,13 +17,19 @@ const fragmentMono = Fragment_Mono({
   variable: '--font-fragment-mono',
 })
 
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-jetbrains-mono',
+})
+
 export const metadata = buildSiteMetadata()
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="id"
-      className={`${inter.variable} ${fragmentMono.variable}`}
+      className={`${inter.variable} ${fragmentMono.variable} ${jetBrainsMono.variable}`}
       data-theme="light"
       suppressHydrationWarning
     >

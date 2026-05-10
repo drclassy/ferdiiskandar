@@ -1,6 +1,7 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
+
 import { getRevealInitial, motionViewport } from '@/lib/motion-variants'
 import { useMotionReady } from '@/lib/use-motion-ready'
 
@@ -36,7 +37,13 @@ export default function SplitText({
   const isMotionReady = useMotionReady()
 
   const units = mode === 'word' ? text.split(' ') : text.split('')
-  const motionTagMap = { h1: motion.h1, h2: motion.h2, h3: motion.h3, p: motion.p, span: motion.span }
+  const motionTagMap = {
+    h1: motion.h1,
+    h2: motion.h2,
+    h3: motion.h3,
+    p: motion.p,
+    span: motion.span,
+  }
   const MotionTag = motionTagMap[Tag]
 
   const containerVariant = {

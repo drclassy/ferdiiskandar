@@ -591,7 +591,7 @@ Append this block near the end of `app/globals.css`:
 
 #about-page .fi-about-hero h1,
 #about-page .fi-about-section h2 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Georgia, serif;
   letter-spacing: -0.06em;
   color: var(--fi-ink);
 }
@@ -670,7 +670,7 @@ Append this block near the end of `app/globals.css`:
 
 #about-page .fi-about-manifesto p {
   color: var(--fi-blue-2);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Georgia, serif;
   font-size: clamp(21px, 2vw, 30px);
   line-height: 1.35;
   letter-spacing: -0.03em;

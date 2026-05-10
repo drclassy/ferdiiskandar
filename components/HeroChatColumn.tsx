@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
+
 import { PromptInputBox } from '@/components/ui/ai-prompt-box'
 
 type HeroChatMessage = {

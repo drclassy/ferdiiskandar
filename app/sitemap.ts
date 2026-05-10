@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next'
+
 import { getSiteUrl } from '@/lib/site-metadata'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -20,6 +21,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${getSiteUrl()}/notes`,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${getSiteUrl()}/classy-news`,
       changeFrequency: 'monthly',
       priority: 0.8,
     },

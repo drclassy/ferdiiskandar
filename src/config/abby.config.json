@@ -228,12 +228,7 @@
     }
   ],
   "response_format": {
-    "default_structure": [
-      "Inti jawaban",
-      "Penjelasan ringkas",
-      "Relevansi",
-      "Langkah berikutnya"
-    ],
+    "default_structure": ["Inti jawaban", "Penjelasan ringkas", "Relevansi", "Langkah berikutnya"],
     "max_default_paragraphs": 4,
     "prefer_tables_when_comparing": true,
     "prefer_bullets_for_steps": true,

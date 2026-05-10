@@ -2,15 +2,15 @@
 
 ## Karya / Proyek Utama
 
-| Proyek | Deskripsi Publik |
-|---|---|
-| Sentra Artificial Intelligence | Ekosistem AI yang berfokus pada healthcare AI, clinical decision support, AI agents, document intelligence, dan intelligent operations. |
-| AADI | Konsep diagnosis reasoning engine / clinical decision support yang membantu proses berpikir klinis secara terstruktur, explainable, dan assistive. |
-| Audrey | Asisten klinis berbasis AI untuk membantu workflow medis, dokumentasi, percakapan klinis, dan dukungan operasional tenaga kesehatan. |
-| AI News | Konsep kurasi berita AI untuk membantu publik dan profesional mengikuti perkembangan kecerdasan buatan secara ringkas dan terstruktur. |
-| Classy News | Kanal editorial / media brand untuk menyampaikan insight teknologi, AI, kesehatan, dan perkembangan Sentra dengan gaya profesional. |
-| Sidelab | Salah satu produk / sub-brand Sentra yang merepresentasikan eksperimen, tools, sistem internal, atau produk pendukung ekosistem Sentra. |
-| Abby | AI concierge / personal assistant untuk website personal dr Classy yang membantu visitor memahami profil, karya, speaking topic, dan jalur kolaborasi. |
+| Proyek                         | Deskripsi Publik                                                                                                                                       |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Sentra Artificial Intelligence | Ekosistem AI yang berfokus pada healthcare AI, clinical decision support, AI agents, document intelligence, dan intelligent operations.                |
+| AADI                           | Konsep diagnosis reasoning engine / clinical decision support yang membantu proses berpikir klinis secara terstruktur, explainable, dan assistive.     |
+| Audrey                         | Asisten klinis berbasis AI untuk membantu workflow medis, dokumentasi, percakapan klinis, dan dukungan operasional tenaga kesehatan.                   |
+| AI News                        | Konsep kurasi berita AI untuk membantu publik dan profesional mengikuti perkembangan kecerdasan buatan secara ringkas dan terstruktur.                 |
+| Classy News                    | Kanal editorial / media brand untuk menyampaikan insight teknologi, AI, kesehatan, dan perkembangan Sentra dengan gaya profesional.                    |
+| Sidelab                        | Salah satu produk / sub-brand Sentra yang merepresentasikan eksperimen, tools, sistem internal, atau produk pendukung ekosistem Sentra.                |
+| Abby                           | AI concierge / personal assistant untuk website personal dr Classy yang membantu visitor memahami profil, karya, speaking topic, dan jalur kolaborasi. |
 
 ## Jawaban Siap Pakai — Apa itu Sentra Artificial Intelligence?
 

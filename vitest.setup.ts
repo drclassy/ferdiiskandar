@@ -3,13 +3,20 @@ import { vi } from 'vitest'
 
 vi.mock('framer-motion', async () => {
   const React = await import('react')
+  type MotionElementProps = {
+    children?: React.ReactNode
+    className?: string
+    style?: React.CSSProperties
+    id?: string
+    role?: string
+  } & Record<string, unknown>
 
   const makeMotion = (tag: string) =>
     React.forwardRef(function MotionEl(
-      { children, className, style, id, role, ...rest }: Record<string, any>,
+      { children, className, style, id, role, ...rest }: MotionElementProps,
       ref: React.Ref<unknown>,
     ) {
-      const htmlAttrs: Record<string, any> = {}
+      const htmlAttrs: Record<string, unknown> = {}
       for (const [key, val] of Object.entries(rest)) {
         if (
           key.startsWith('data-') ||
@@ -23,9 +30,26 @@ vi.mock('framer-motion', async () => {
     })
 
   const tags = [
-    'div', 'span', 'p', 'h1', 'h2', 'h3', 'h4', 'section', 'article',
-    'aside', 'header', 'footer', 'ul', 'li', 'a', 'nav', 'main',
-    'blockquote', 'time', 'figure',
+    'div',
+    'span',
+    'p',
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'section',
+    'article',
+    'aside',
+    'header',
+    'footer',
+    'ul',
+    'li',
+    'a',
+    'nav',
+    'main',
+    'blockquote',
+    'time',
+    'figure',
   ]
   const motion = Object.fromEntries(tags.map((tag) => [tag, makeMotion(tag)]))
 

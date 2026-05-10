@@ -50,12 +50,12 @@ The primary AI experience is centered on Abby, while a secondary chat endpoint r
 
 The public website is designed as a structured reading experience rather than a simple brochure.
 
-| Field | Value |
-|---|---|
-| **Primary audience** | Public visitors, media, partners, healthcare leaders, event organizers |
-| **Primary surface** | Editorial homepage + public route set |
-| **Design language** | Founder dossier, publication-grade hierarchy, institutional editorial layout |
-| **Goal** | Explain dr Ferdi Iskandar clearly and credibly |
+| Field                | Value                                                                        |
+| -------------------- | ---------------------------------------------------------------------------- |
+| **Primary audience** | Public visitors, media, partners, healthcare leaders, event organizers       |
+| **Primary surface**  | Editorial homepage + public route set                                        |
+| **Design language**  | Founder dossier, publication-grade hierarchy, institutional editorial layout |
+| **Goal**             | Explain dr Ferdi Iskandar clearly and credibly                               |
 
 ---
 
@@ -63,13 +63,13 @@ The public website is designed as a structured reading experience rather than a 
 
 Abby is the personal AI assistant for dr Ferdi Iskandar's website.
 
-| Field | Value |
-|---|---|
-| **Name** | Abby |
-| **Role** | Personal AI assistant for dr Ferdi Iskandar |
-| **Default language** | Bahasa Indonesia |
-| **Knowledge source** | Markdown files in `content/abby/` |
-| **Primary API** | `/api/abby` |
+| Field                | Value                                       |
+| -------------------- | ------------------------------------------- |
+| **Name**             | Abby                                        |
+| **Role**             | Personal AI assistant for dr Ferdi Iskandar |
+| **Default language** | Bahasa Indonesia                            |
+| **Knowledge source** | Markdown files in `content/abby/`           |
+| **Primary API**      | `/api/abby`                                 |
 
 Abby is designed to feel warm, professional, concise, and reliable. Responses are normalized to plain text, and the assistant is positioned as a guide to dr Ferdi Iskandar's public profile, work, and collaboration surfaces rather than as a clinical decision engine.
 
@@ -79,12 +79,12 @@ Abby is designed to feel warm, professional, concise, and reliable. Responses ar
 
 The app still exposes a legacy chat endpoint.
 
-| Field | Value |
-|---|---|
-| **Route** | `/api/chat` |
-| **Provider** | NVIDIA API |
-| **Status** | Secondary |
-| **Purpose** | Earlier guide-style interaction path |
+| Field        | Value                                |
+| ------------ | ------------------------------------ |
+| **Route**    | `/api/chat`                          |
+| **Provider** | NVIDIA API                           |
+| **Status**   | Secondary                            |
+| **Purpose**  | Earlier guide-style interaction path |
 
 ---
 
@@ -131,29 +131,29 @@ The app still exposes a legacy chat endpoint.
 
 ## Routes
 
-| Route | Type | Purpose |
-|---|---|---|
-| `/` | Public page | Editorial homepage |
-| `/about` | Public page | Full founder profile |
-| `/works` | Public page | Selected systems and works |
-| `/notes` | Public page | Writing / notes surface |
-| `/speaking` | Public page | Speaking profile |
-| `/cv` | Public page | CV and credentials surface |
-| `/api/abby` | API | Main Abby assistant endpoint |
-| `/api/chat` | API | Legacy chat endpoint |
-| `/robots.txt` | Generated | Robots metadata |
-| `/sitemap.xml` | Generated | Sitemap metadata |
+| Route          | Type        | Purpose                      |
+| -------------- | ----------- | ---------------------------- |
+| `/`            | Public page | Editorial homepage           |
+| `/about`       | Public page | Full founder profile         |
+| `/works`       | Public page | Selected systems and works   |
+| `/notes`       | Public page | Writing / notes surface      |
+| `/speaking`    | Public page | Speaking profile             |
+| `/cv`          | Public page | CV and credentials surface   |
+| `/api/abby`    | API         | Main Abby assistant endpoint |
+| `/api/chat`    | API         | Legacy chat endpoint         |
+| `/robots.txt`  | Generated   | Robots metadata              |
+| `/sitemap.xml` | Generated   | Sitemap metadata             |
 
 ---
 
 ## Prerequisites
 
-| Dependency | Version | Purpose |
-|---|---|---|
-| Node.js | `>=22.0.0` | Runtime |
-| pnpm | workspace-managed | Package manager |
-| Next.js | `15.5.15` | App framework |
-| React | `19.x` | UI runtime |
+| Dependency | Version           | Purpose         |
+| ---------- | ----------------- | --------------- |
+| Node.js    | `>=22.0.0`        | Runtime         |
+| pnpm       | workspace-managed | Package manager |
+| Next.js    | `15.5.15`         | App framework   |
+| React      | `19.x`            | UI runtime      |
 
 Within the monorepo, this app lives at:
 
@@ -215,20 +215,20 @@ NVIDIA_API_KEY=
 
 ### Provider behavior
 
-| Mode | Endpoint | Notes |
-|---|---|---|
-| `AI_PROVIDER=deepseek` | `/api/abby` | Default Abby provider |
-| `AI_PROVIDER=openai` | `/api/abby` | Alternate Abby provider |
-| `NVIDIA_API_KEY` | `/api/chat` | Legacy only |
+| Mode                   | Endpoint    | Notes                   |
+| ---------------------- | ----------- | ----------------------- |
+| `AI_PROVIDER=deepseek` | `/api/abby` | Default Abby provider   |
+| `AI_PROVIDER=openai`   | `/api/abby` | Alternate Abby provider |
+| `NVIDIA_API_KEY`       | `/api/chat` | Legacy only             |
 
 ---
 
 ## API Reference
 
-| Endpoint | Method | Description |
-|---|---|---|
+| Endpoint    | Method | Description                     |
+| ----------- | ------ | ------------------------------- |
 | `/api/abby` | `POST` | Main Abby conversation endpoint |
-| `/api/chat` | `POST` | Legacy chat endpoint |
+| `/api/chat` | `POST` | Legacy chat endpoint            |
 
 ### Example — POST `/api/abby`
 
@@ -292,13 +292,13 @@ Supporting configuration:
 
 Abby is not a diagnosis engine and should not be represented as one.
 
-| Boundary | Current Rule |
-|---|---|
-| **Medical diagnosis** | Not allowed |
-| **Personal treatment advice** | Not allowed |
-| **Clinical decision replacement** | Not allowed |
-| **Website guidance** | Primary purpose |
-| **Public profile explanation** | Allowed |
+| Boundary                               | Current Rule                 |
+| -------------------------------------- | ---------------------------- |
+| **Medical diagnosis**                  | Not allowed                  |
+| **Personal treatment advice**          | Not allowed                  |
+| **Clinical decision replacement**      | Not allowed                  |
+| **Website guidance**                   | Primary purpose              |
+| **Public profile explanation**         | Allowed                      |
 | **General educational health context** | Allowed, non-diagnostic only |
 
 The site currently represents:
@@ -339,13 +339,13 @@ Current test coverage includes:
 
 ## Roadmap
 
-| Target | Focus | Status |
-|---|---|---|
-| v0.1.x | Founder dossier stabilization | Active |
-| v0.1.x | Abby knowledge refinement | Active |
-| v0.1.x | Public route hardening | Active |
-| Later | Abby UX and visitor guidance refinement | Planned |
-| Later | Founder content expansion across public routes | Planned |
+| Target | Focus                                          | Status  |
+| ------ | ---------------------------------------------- | ------- |
+| v0.1.x | Founder dossier stabilization                  | Active  |
+| v0.1.x | Abby knowledge refinement                      | Active  |
+| v0.1.x | Public route hardening                         | Active  |
+| Later  | Abby UX and visitor guidance refinement        | Planned |
+| Later  | Founder content expansion across public routes | Planned |
 
 ---
 

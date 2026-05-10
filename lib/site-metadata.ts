@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+
 import { siteIdentity } from '@/lib/site-content'
 
 type PageMetadataInput = {
@@ -11,11 +12,7 @@ export function getSiteUrl() {
   return process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 }
 
-export function buildPageMetadata({
-  title,
-  description,
-  pathname,
-}: PageMetadataInput): Metadata {
+export function buildPageMetadata({ title, description, pathname }: PageMetadataInput): Metadata {
   const siteTitle = `${title} | ${siteIdentity.name}`
 
   return {
@@ -41,7 +38,7 @@ export function buildPageMetadata({
 export function buildSiteMetadata(): Metadata {
   const title = `${siteIdentity.name} — ${siteIdentity.headline}`
   const description =
-    'Profil pribadi dr. Ferdi Iskandar sebagai founder di bidang applied intelligence, kepemimpinan institusional, dan pengembangan systems di sektor healthcare, education, workforce, dan digital experience di Indonesia.'
+    'Profil pribadi dr. Ferdi Iskandar sebagai pendiri di bidang kecerdasan terapan, kepemimpinan institusional, dan pengembangan sistem di sektor layanan kesehatan, pendidikan, tenaga kerja, dan pengalaman digital di Indonesia.'
 
   return {
     title,

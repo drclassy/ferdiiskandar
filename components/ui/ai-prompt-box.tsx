@@ -1,9 +1,8 @@
 'use client'
 
-import * as React from 'react'
-import Image from 'next/image'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
+import { AnimatePresence, motion } from 'framer-motion'
 import {
   ArrowUp,
   BrainCog,
@@ -15,7 +14,8 @@ import {
   StopCircle,
   X,
 } from 'lucide-react'
-import { AnimatePresence, motion } from 'framer-motion'
+import Image from 'next/image'
+import * as React from 'react'
 
 const cn = (...classes: Array<string | false | null | undefined>) =>
   classes.filter(Boolean).join(' ')
@@ -82,9 +82,7 @@ function ImagePreviewDialog({
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className="fi-prompt-dialog-overlay" />
         <DialogPrimitive.Content className="fi-prompt-dialog-content">
-          <DialogPrimitive.Title className="fi-prompt-sr-only">
-            Image Preview
-          </DialogPrimitive.Title>
+          <DialogPrimitive.Title className="fi-prompt-sr-only">Image Preview</DialogPrimitive.Title>
           <DialogPrimitive.Close className="fi-prompt-dialog-close">
             <X aria-hidden="true" />
             <span className="fi-prompt-sr-only">Close</span>

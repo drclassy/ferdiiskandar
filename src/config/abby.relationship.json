@@ -51,41 +51,25 @@
       "mode": "first_time_public_visitor",
       "goal": "Membuat pengunjung cepat paham siapa dr Ferdi Iskandar.",
       "recommended_opening": "Halo, saya Abby. Kalau Anda baru pertama kali di sini, saya bisa bantu mengenalkan dr Ferdi Iskandar tanpa membuat Anda harus membaca semua halaman sekaligus.",
-      "next_step_options": [
-        "Profil singkat",
-        "Perjalanan profesional",
-        "Karya dan proyek"
-      ]
+      "next_step_options": ["Profil singkat", "Perjalanan profesional", "Karya dan proyek"]
     },
     {
       "mode": "media_or_event",
       "goal": "Membantu mereka mendapatkan materi siap pakai.",
       "recommended_opening": "Baik, saya bantu siapkan versi yang rapi untuk kebutuhan publikasi atau acara.",
-      "next_step_options": [
-        "Bio singkat",
-        "Intro panggung",
-        "Angle wawancara"
-      ]
+      "next_step_options": ["Bio singkat", "Intro panggung", "Angle wawancara"]
     },
     {
       "mode": "partner_or_healthcare_leader",
       "goal": "Membangun trust dan relevansi profesional.",
       "recommended_opening": "Saya bantu lihat dari sudut strategis: pengalaman klinis, kepemimpinan rumah sakit, dan arah healthcare AI dr Ferdi Iskandar.",
-      "next_step_options": [
-        "Ringkasan kolaborasi",
-        "Healthcare AI focus",
-        "Profil profesional"
-      ]
+      "next_step_options": ["Ringkasan kolaborasi", "Healthcare AI focus", "Profil profesional"]
     },
     {
       "mode": "ai_tech_builder",
       "goal": "Menghubungkan personal profile dengan pemikiran sistem dan AI.",
       "recommended_opening": "Kalau dari sisi AI builder, bagian menariknya adalah bagaimana pengalaman klinis dan operasional rumah sakit membentuk cara dr Ferdi Iskandar melihat sistem AI.",
-      "next_step_options": [
-        "AI philosophy",
-        "Projects",
-        "System thinking"
-      ]
+      "next_step_options": ["AI philosophy", "Projects", "System thinking"]
     }
   ],
   "rapport_rules": {

@@ -1,30 +1,34 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
+
 import SplitText from '@/components/SplitText'
-import { getRevealInitial, motionVariants, staggerContainer, motionViewport, transitions } from '@/lib/motion-variants'
+import {
+  getRevealInitial,
+  motionVariants,
+  staggerContainer,
+  motionViewport,
+  transitions,
+} from '@/lib/motion-variants'
 import { useMotionReady } from '@/lib/use-motion-ready'
 
 const copyParagraphs: React.ReactNode[] = [
   <>
     <strong>
-      Dedikasi saya berakar pada konvergensi antara presisi klinis dan arsitektur
-      kognitif buatan.
+      Dedikasi saya berakar pada konvergensi antara presisi klinis dan arsitektur kognitif buatan.
     </strong>{' '}
-    Sebagai praktisi medis aktif dan founder, fokus saya adalah mengembangkan systems
-    yang membantu mengekstrak signal dari kebisingan data klinis dan kompleksitas
-    operasional yang lebih luas.
+    Sebagai praktisi medis aktif dan founder, fokus saya adalah mengembangkan systems yang membantu
+    mengekstrak signal dari kebisingan data klinis dan kompleksitas operasional yang lebih luas.
   </>,
   <>
-    Visi ini bukan tentang substitusi, melainkan augmentasi. AI seharusnya membantu
-    manusia melihat pola lebih cepat, mengurangi beban administratif, dan menjaga
-    konteks keputusan tetap jelas di lingkungan healthcare, education, workforce,
-    maupun digital systems.
+    Visi ini bukan tentang substitusi, melainkan augmentasi. AI seharusnya membantu manusia melihat
+    pola lebih cepat, mengurangi beban administratif, dan menjaga konteks keputusan tetap jelas di
+    lingkungan layanan kesehatan, pendidikan, tenaga kerja, maupun sistem digital.
   </>,
   <>
-    Melalui Melinda DHAI dan Sentra Healthcare Artificial Intelligence, saya berupaya
-    membangun infrastruktur yang berbasis empati, validasi data, dan standar teknis yang
-    dapat dipercaya untuk systems yang bekerja di bawah tanggung jawab nyata.
+    Melalui Melinda DHAI dan Sentra Healthcare Artificial Intelligence, saya berupaya membangun
+    infrastruktur yang berbasis empati, validasi data, dan standar teknis yang dapat dipercaya untuk
+    systems yang bekerja di bawah tanggung jawab nyata.
   </>,
 ]
 

@@ -3,7 +3,7 @@ export const speakingHero = {
   title: 'Beyond Treatment',
   subtitle: 'Clinical Trajectory and the Future of Preventive Healthcare AI',
   thesis:
-    'Healthcare should not wait until patients become critical before systems become intelligent.',
+    'Healthcare systems should not become intelligent only after patients have reached a critical condition.',
   context:
     'dr. Ferdi Iskandar speaks at the intersection of clinical medicine, healthcare leadership, health law, and artificial intelligence — connecting twelve years of real hospital experience with a practical vision for preventive AI.',
 } as const
@@ -34,7 +34,12 @@ export const selectedTalks: SpeakingEventItem[] = [
 ]
 
 export const speakingIndexEntries = [
-  { number: '01', title: 'Signature Theme', detail: 'Clinical Trajectory', href: '#speaking-theme' },
+  {
+    number: '01',
+    title: 'Signature Theme',
+    detail: 'Clinical Trajectory',
+    href: '#speaking-theme',
+  },
   { number: '02', title: 'Speaking Topics', detail: '8 Core Areas', href: '#speaking-topics' },
   { number: '03', title: 'Formats', detail: 'Keynote to Workshop', href: '#speaking-formats' },
   { number: '04', title: 'Takeaways', detail: '6 Key Insights', href: '#speaking-takeaways' },
@@ -44,7 +49,6 @@ export const speakingIndexEntries = [
 
 export const speakerProfile = {
   name: 'dr. Ferdi Iskandar / dr. Classy',
-  credentials: 'dr., SH, MKN, CLM, CMDC',
   title: 'Physician · 12-Year Hospital CEO · Founder & CEO of Sentra Artificial Intelligence',
 } as const
 
@@ -52,11 +56,15 @@ export const speakerBackground = [
   { area: 'Healthcare Leadership', detail: '12 years as CEO of a private maternal hospital' },
   { area: 'Clinical Practice', detail: '7 years as a primary care physician' },
   { area: 'International Organization', detail: '9 years as Executive Staff in IVAO' },
-  { area: 'Academic Focus', detail: "Master's thesis in Civil Law on IVF and surrogate motherhood" },
+  {
+    area: 'Academic Focus',
+    detail: "Master's thesis in Civil Law on IVF and surrogate motherhood",
+  },
   { area: 'Current Role', detail: 'Founder & CEO of Sentra Artificial Intelligence' },
   {
     area: 'Core Focus',
-    detail: 'Clinical Trajectory · Healthcare AI · Clinical Decision Support · Preventive Intelligence',
+    detail:
+      'Clinical Trajectory · Healthcare AI · Clinical Decision Support · Preventive Intelligence',
   },
 ] as const
 
@@ -124,7 +132,11 @@ export type SpeakingFormatItem = {
 }
 
 export const speakingFormats: SpeakingFormatItem[] = [
-  { format: 'Keynote Talk', duration: '20–30 min', bestFor: 'Conferences, healthcare forums, AI events' },
+  {
+    format: 'Keynote Talk',
+    duration: '20–30 min',
+    bestFor: 'Conferences, healthcare forums, AI events',
+  },
   {
     format: 'Founder Talk',
     duration: '15–20 min',
@@ -202,11 +214,10 @@ export const signatureTransformation = [
 ] as const
 
 export const signatureLines = [
-  'Healthcare should not wait until patients become critical before systems become intelligent.',
-  'The future of healthcare is not only to treat disease, but to anticipate deterioration before it becomes critical.',
-  'Clinical Trajectory turns fragmented clinical data into preventive action.',
-  'AI should not replace doctors. It should help doctors see earlier, reason clearer, and act faster.',
-  'The next frontier of healthcare AI is not automation. It is prevention.',
+  'Healthcare systems should not become intelligent only after patients have reached a critical condition. The future of healthcare lies not merely in treating disease, but in the ability to identify, predict, and prevent clinical deterioration before it progresses into a life-threatening state.',
+  'Clinical Trajectory transforms fragmented clinical data into clinically meaningful signals, enabling earlier risk recognition and more precise preventive action.',
+  'Artificial intelligence in healthcare should not replace physicians. Rather, it should augment clinical decision-making by helping doctors detect deterioration earlier, reason more clearly, and act more rapidly.',
+  'The next frontier of healthcare AI is therefore not automation alone, but the development of predictive, preventive, and proactive healthcare systems.',
 ] as const
 
 export const speakingInvite = {

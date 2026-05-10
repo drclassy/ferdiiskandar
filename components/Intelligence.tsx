@@ -1,7 +1,14 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
-import { getRevealInitial, motionVariants, staggerContainer, motionViewport, transitions } from '@/lib/motion-variants'
+
+import {
+  getRevealInitial,
+  motionVariants,
+  staggerContainer,
+  motionViewport,
+  transitions,
+} from '@/lib/motion-variants'
 import { useMotionReady } from '@/lib/use-motion-ready'
 
 type NewsSignal = {
@@ -84,16 +91,16 @@ export default function Intelligence() {
         <motion.div
           className="fi-section-head"
           initial={revealInitial}
-        whileInView="visible"
-        viewport={motionViewport}
-        variants={motionVariants.slideIn}
-        transition={shouldReduce ? { duration: 0 } : transitions.medium}
-      >
-        <div>
-          <p className="fi-section-lead">
-            Di sini Anda bisa mendapatkan informasi AI terbaru dari outlet besar, dipilih
-            karena paling relevan dengan perkembangan model, kebijakan, infrastruktur,
-              dan workflow di sektor berisiko tinggi.
+          whileInView="visible"
+          viewport={motionViewport}
+          variants={motionVariants.slideIn}
+          transition={shouldReduce ? { duration: 0 } : transitions.medium}
+        >
+          <div>
+            <p className="fi-section-lead">
+              Di sini Anda bisa mendapatkan informasi AI terbaru dari outlet besar, dipilih karena
+              paling relevan dengan perkembangan model, kebijakan, infrastruktur, dan workflow di
+              sektor berisiko tinggi.
             </p>
           </div>
         </motion.div>
@@ -136,8 +143,8 @@ export default function Intelligence() {
               <span>Catatan Redaksi</span>
               <strong>Snapshot: 8 Mei 2026</strong>
               <p>
-                Fokus kurasi ini adalah berita yang membentuk arah model frontier, rezim
-                pengujian, lapisan orkestrasi, dan ekonomi komputasi.
+                Fokus kurasi ini adalah berita yang membentuk arah model frontier, rezim pengujian,
+                lapisan orkestrasi, dan ekonomi komputasi.
               </p>
             </div>
             <div className="fi-intelligence-rail-block">

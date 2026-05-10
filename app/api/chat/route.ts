@@ -1,4 +1,5 @@
-import { NextRequest } from 'next/server'
+import { type NextRequest } from 'next/server'
+
 import { CHAT_SYSTEM_PROMPT } from '@/lib/chat-knowledge'
 
 const NVIDIA_BASE_URL = 'https://integrate.api.nvidia.com/v1'
@@ -89,7 +90,12 @@ export async function POST(request: NextRequest) {
     const trimmed = userMessage.trim()
 
     if (trimmed.length === 0) {
-      return problem(400, 'Invalid Message', 'Message cannot be empty.', '/v1/problems/invalid-message')
+      return problem(
+        400,
+        'Invalid Message',
+        'Message cannot be empty.',
+        '/v1/problems/invalid-message',
+      )
     }
 
     if (trimmed.length > 2000) {
@@ -101,27 +107,24 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const nvidiaResponse = await fetch(
-      `${NVIDIA_BASE_URL}/chat/completions`,
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: MODEL,
-          messages: [
-            { role: 'system', content: CHAT_SYSTEM_PROMPT },
-            { role: 'user', content: trimmed },
-          ],
-          max_tokens: 600,
-          temperature: 0.7,
-          top_p: 0.9,
-        }),
-        signal: AbortSignal.timeout(25_000),
+    const nvidiaResponse = await fetch(`${NVIDIA_BASE_URL}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
       },
-    )
+      body: JSON.stringify({
+        model: MODEL,
+        messages: [
+          { role: 'system', content: CHAT_SYSTEM_PROMPT },
+          { role: 'user', content: trimmed },
+        ],
+        max_tokens: 600,
+        temperature: 0.7,
+        top_p: 0.9,
+      }),
+      signal: AbortSignal.timeout(25_000),
+    })
 
     if (!nvidiaResponse.ok) {
       const errorText = await nvidiaResponse.text()
@@ -146,8 +149,7 @@ export async function POST(request: NextRequest) {
 
     const data = await nvidiaResponse.json()
     const reply =
-      data?.choices?.[0]?.message?.content ||
-      'I could not generate a response at this time.'
+      data?.choices?.[0]?.message?.content || 'I could not generate a response at this time.'
 
     return Response.json({ reply }, { headers: jsonHeaders() })
   } catch (error) {

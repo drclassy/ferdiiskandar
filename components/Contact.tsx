@@ -2,9 +2,16 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 import { FaEnvelope, FaGithub, FaKaggle, FaLinkedinIn, FaMedium, FaXTwitter } from 'react-icons/fa6'
-import { socialLinks } from '@/lib/site-content'
-import { getRevealInitial, motionVariants, staggerContainer, motionViewport, transitions } from '@/lib/motion-variants'
+
 import SectionNumberMark from '@/components/SectionNumberMark'
+import {
+  getRevealInitial,
+  motionVariants,
+  staggerContainer,
+  motionViewport,
+  transitions,
+} from '@/lib/motion-variants'
+import { socialLinks } from '@/lib/site-content'
 import { useMotionReady } from '@/lib/use-motion-ready'
 
 type IconKey = 'linkedin' | 'x' | 'medium' | 'github' | 'kaggle' | 'email'
@@ -35,13 +42,13 @@ export default function Contact() {
       >
         <SectionNumberMark number="06" />
         <div>
-          <div className="fi-kicker">Connect</div>
+          <div className="fi-kicker">Kontak</div>
           <h2 className="fi-section-title" id="contact-title">
-            The right surface for the right conversation.
+            Permukaan yang tepat untuk percakapan yang tepat.
           </h2>
           <p className="fi-section-lead" style={{ marginTop: '20px' }}>
-            Setiap channel memiliki fungsi yang berbeda. Pilih permukaan yang paling
-            sesuai dengan maksud, konteks, dan arah percakapan Anda.
+            Setiap kanal memiliki fungsi yang berbeda. Pilih permukaan yang paling sesuai dengan
+            maksud, konteks, dan arah percakapan Anda.
           </p>
         </div>
       </motion.div>

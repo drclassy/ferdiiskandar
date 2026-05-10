@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next'
+
 import { getSiteUrl } from '@/lib/site-metadata'
 
 export default function robots(): MetadataRoute.Robots {

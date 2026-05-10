@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
+
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
+import { cvCredentials } from '@/lib/cv-content'
 import {
   signatureLines,
   signatureTransformation,
@@ -22,7 +24,6 @@ export default function SpeakingPage() {
     <div className="fi-speaking-dossier" id="speaking-page">
       <Navbar />
       <main className="fi-speaking-dossier-shell" id="main-content">
-
         {/* LEFT — Index Sidebar */}
         <aside aria-label="Speaking index" className="fi-speaking-index">
           <div className="fi-speaking-index-title">Speaking Index</div>
@@ -37,11 +38,11 @@ export default function SpeakingPage() {
           </nav>
           <div className="fi-speaking-index-card">
             <p>
-              Platform sebelum panggung.
+              Platform before the stage.
               <br />
-              Klinis sebelum teknis.
+              Clinical clarity before technical language.
               <br />
-              Nurani di atas otomasi.
+              Conscience above automation.
             </p>
             <span aria-hidden="true">✧</span>
             <small>Speaker Registry</small>
@@ -50,7 +51,6 @@ export default function SpeakingPage() {
 
         {/* CENTER — Main */}
         <div className="fi-speaking-main">
-
           {/* HERO */}
           <header className="fi-speaking-hero" id="speaking-hero">
             <div className="fi-speaking-hero-copy">
@@ -73,8 +73,9 @@ export default function SpeakingPage() {
               </div>
               <div className="fi-speaking-hero-credentials">
                 <strong>{speakerProfile.name}</strong>
-                <span>{speakerProfile.credentials}</span>
-                <span>{speakerProfile.title}</span>
+                <p className="fi-speaking-hero-credentials-shorthand">
+                  {cvCredentials.map((c) => c.code).join(' · ')}
+                </p>
               </div>
             </div>
           </header>
@@ -91,10 +92,9 @@ export default function SpeakingPage() {
             </div>
             <div className="fi-speaking-theme-body">
               <p className="fi-speaking-theme-statement">
-                For decades, healthcare has been built around a reactive model. The next frontier
-                is not only better treatment — it is earlier anticipation. Clinical Trajectory asks
-                the deeper question:{' '}
-                <em>&ldquo;Where is this patient heading?&rdquo;</em>
+                For decades, healthcare has been built around a reactive model. The next frontier is
+                not only better treatment — it is earlier anticipation. Clinical Trajectory asks the
+                deeper question: <em>&ldquo;Where is this patient heading?&rdquo;</em>
               </p>
               <div className="fi-speaking-transformation">
                 <div aria-hidden="true" className="fi-speaking-transform-head">
@@ -104,15 +104,17 @@ export default function SpeakingPage() {
                 {signatureTransformation.map((row) => (
                   <div className="fi-speaking-transform-row" key={row.from}>
                     <span className="fi-speaking-transform-from">{row.from}</span>
-                    <span aria-hidden="true" className="fi-speaking-transform-arrow">→</span>
+                    <span aria-hidden="true" className="fi-speaking-transform-arrow">
+                      →
+                    </span>
                     <span className="fi-speaking-transform-to">{row.to}</span>
                   </div>
                 ))}
               </div>
               <p className="fi-speaking-theme-abstract">
                 Healthcare AI should not merely automate existing workflows. It should help
-                healthcare systems become more preventive, more intelligent, and more responsive
-                to early signs of clinical risk — while keeping doctors at the center of every
+                healthcare systems become more preventive, more intelligent, and more responsive to
+                early signs of clinical risk — while keeping doctors at the center of every
                 decision.
               </p>
             </div>
@@ -204,7 +206,11 @@ export default function SpeakingPage() {
                   <div className="fi-speaking-event-meta">
                     <span className="fi-speaking-entry-num">{event.number}</span>
                     <span className="fi-speaking-event-status" data-status={event.status}>
-                      {event.status === 'past' ? 'Past' : event.status === 'confirmed' ? 'Confirmed' : 'Forthcoming'}
+                      {event.status === 'past'
+                        ? 'Past'
+                        : event.status === 'confirmed'
+                          ? 'Confirmed'
+                          : 'Forthcoming'}
                     </span>
                     <span className="fi-speaking-event-type">{event.type}</span>
                   </div>
@@ -267,7 +273,6 @@ export default function SpeakingPage() {
               ))}
             </div>
           </section>
-
         </div>
 
         {/* RIGHT — Glance Sidebar */}
@@ -287,7 +292,6 @@ export default function SpeakingPage() {
             </section>
           ))}
         </aside>
-
       </main>
       <Footer />
     </div>

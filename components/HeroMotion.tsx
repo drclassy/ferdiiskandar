@@ -1,7 +1,7 @@
 'use client'
 
-import { createElement, type CSSProperties, type ReactNode } from 'react'
 import { m, useReducedMotion } from 'framer-motion'
+import { createElement, type CSSProperties, type ReactNode } from 'react'
 
 const motionElements = {
   article: m.article,

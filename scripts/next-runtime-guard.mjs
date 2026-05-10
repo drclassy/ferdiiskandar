@@ -109,11 +109,17 @@ function ensureHealthyNextCli(mode) {
   const cliScriptPath = resolveNextCliScriptPath(mode)
 
   if (!fs.existsSync(cliScriptPath)) {
-    console.error(`Missing Next.js CLI file at ${cliScriptPath}. Reinstall dependencies and try again.`)
+    console.error(
+      `Missing Next.js CLI file at ${cliScriptPath}. Reinstall dependencies and try again.`,
+    )
     process.exit(1)
   }
 
-  const inspection = inspectNextCliScript(mode, fs.readFileSync(cliScriptPath, 'utf8'), cliScriptPath)
+  const inspection = inspectNextCliScript(
+    mode,
+    fs.readFileSync(cliScriptPath, 'utf8'),
+    cliScriptPath,
+  )
 
   if (inspection.status === 'invalid') {
     console.error(inspection.message)

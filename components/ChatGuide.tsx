@@ -54,13 +54,9 @@ export default function ChatGuide() {
         throw new Error(data.error || 'Gagal menghubungi layanan AI.')
       }
 
-      setMessages((prev) => [
-        ...prev,
-        { role: 'assistant', text: data.reply },
-      ])
+      setMessages((prev) => [...prev, { role: 'assistant', text: data.reply }])
     } catch (err) {
-      const message =
-        err instanceof Error ? err.message : 'Terjadi kesalahan. Silakan coba lagi.'
+      const message = err instanceof Error ? err.message : 'Terjadi kesalahan. Silakan coba lagi.'
       setError(message)
     } finally {
       setLoading(false)
@@ -131,9 +127,7 @@ export default function ChatGuide() {
             {messages.map((msg, i) => (
               <div
                 className={`fi-chat-bubble ${
-                  msg.role === 'user'
-                    ? 'fi-chat-bubble-user'
-                    : 'fi-chat-bubble-assistant'
+                  msg.role === 'user' ? 'fi-chat-bubble-user' : 'fi-chat-bubble-assistant'
                 }`}
                 key={i}
               >

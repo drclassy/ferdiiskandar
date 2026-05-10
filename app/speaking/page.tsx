@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+
 import SpeakingPage from '@/components/SpeakingPage'
 
 export const metadata: Metadata = {

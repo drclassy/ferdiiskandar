@@ -1,7 +1,13 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
-import { getRevealInitial, motionVariants, motionViewport, transitions } from '@/lib/motion-variants'
+
+import {
+  getRevealInitial,
+  motionVariants,
+  motionViewport,
+  transitions,
+} from '@/lib/motion-variants'
 import { useMotionReady } from '@/lib/use-motion-ready'
 
 const notes = [
@@ -14,7 +20,7 @@ const notes = [
   {
     tag: 'Architecture',
     title: 'The Genesis Matrix',
-    body: 'Catatan tentang bagaimana systems healthcare AI dapat dibangun dari fondasi data, workflow, dan reasoning.',
+    body: 'Catatan tentang bagaimana sistem AI kesehatan dapat dibangun dari fondasi data, alur kerja, dan penalaran.',
     xOffset: 0,
   },
   {
@@ -43,11 +49,11 @@ export default function FieldNotes() {
         <div className="fi-kicker">Insights &amp; Reflections</div>
         <div>
           <h2 className="fi-section-title">
-            Field notes from medicine, law, and intelligence systems.
+            Catatan lapangan dari kedokteran, hukum, dan sistem kecerdasan.
           </h2>
           <p className="fi-section-lead">
-            Tulisan dan refleksi strategis yang dapat dikembangkan menjadi blog, memo
-            founder, atau halaman insight lintas care, law, dan intelligence systems.
+            Tulisan dan refleksi strategis yang dapat dikembangkan menjadi blog, memo founder, atau
+            halaman insight lintas perawatan, hukum, dan sistem kecerdasan.
           </p>
         </div>
       </motion.div>
@@ -57,7 +63,11 @@ export default function FieldNotes() {
           <motion.article
             className="fi-note"
             key={note.title}
-            initial={getRevealInitial(isMotionReady, shouldReduce, { x: note.xOffset, y: 30, opacity: 0 })}
+            initial={getRevealInitial(isMotionReady, shouldReduce, {
+              x: note.xOffset,
+              y: 30,
+              opacity: 0,
+            })}
             whileInView={{ x: 0, y: 0, opacity: 1 }}
             viewport={motionViewport}
             transition={shouldReduce ? { duration: 0 } : { ...transitions.medium, delay: i * 0.12 }}

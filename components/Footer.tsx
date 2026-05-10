@@ -1,4 +1,5 @@
 import Image from 'next/image'
+
 import { footerMeta, siteIdentity } from '@/lib/site-content'
 
 export default function Footer() {
@@ -10,9 +11,9 @@ export default function Footer() {
         </span>
         <span>{footerMeta.location}</span>
       </div>
-      <div className="fi-footer-signature" aria-label="Signature plate">
+      <div className="fi-footer-signature" aria-label="Panel tanda tangan">
         <Image
-          alt="Signature of dr. Ferdi Iskandar"
+          alt="Tanda tangan dr. Ferdi Iskandar"
           className="fi-footer-signature-image"
           height={120}
           src="/sign.png"

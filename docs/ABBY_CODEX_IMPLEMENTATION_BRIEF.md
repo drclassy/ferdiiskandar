@@ -88,8 +88,8 @@ If the repo does not have all commands, run the available equivalents and docume
 ## Rollback Plan
 
 If implementation causes UI or build issues:
+
 1. Remove Abby component import from page/layout.
 2. Keep config/content files intact.
 3. Revert only chat UI and API route changes.
 4. Re-run build and typecheck.
-
