@@ -1,14 +1,16 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
+import { DossierGlanceSections, DossierIndexNav } from '@/components/DossierShared'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import {
+  cvCertifications,
   cvCredentials,
   cvEducation,
   cvExperience,
   cvGlanceSections,
   cvHero,
+  cvHeroMetrics,
   cvIndexEntries,
   cvProfile,
   cvPublications,
@@ -41,13 +43,7 @@ export default function CVPage() {
         <aside aria-label="Indeks CV" className="fi-cv-index">
           <div className="fi-cv-index-title">Indeks CV</div>
           <nav aria-label="Bagian CV" className="fi-cv-index-nav">
-            {cvIndexEntries.map((item) => (
-              <Link href={item.href} key={item.number}>
-                <span>{item.number}</span>
-                <strong>{item.title}</strong>
-                <em>{item.detail}</em>
-              </Link>
-            ))}
+            <DossierIndexNav entries={cvIndexEntries} />
           </nav>
           <div className="fi-cv-index-card">
             <p>
@@ -80,16 +76,25 @@ export default function CVPage() {
                 <p className="fi-cv-hero-motto-line">{cvHero.profileMottoLines[1]}</p>
               </div>
               <p className="fi-cv-hero-context fi-cv-hero-prose-id">{cvHero.profileClosing}</p>
+              <div aria-label="Ringkasan jalur karier" className="fi-cv-hero-ledger">
+                {cvHeroMetrics.map((metric) => (
+                  <div className="fi-cv-hero-ledger-item" key={metric.label}>
+                    <span>{metric.label}</span>
+                    <strong>{metric.value}</strong>
+                    <em>{metric.detail}</em>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="fi-cv-hero-portrait">
               <div className="fi-cv-hero-photo">
                 <Image
                   alt="dr. Ferdi Iskandar"
-                  fill
+                  height={941}
                   priority
                   sizes="(max-width: 900px) 100vw, 45vw"
-                  src="/cdrferdi.png"
-                  style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
+                  src="/drferdi.png"
+                  width={1672}
                 />
               </div>
               <div className="fi-cv-hero-credential-strip">
@@ -97,6 +102,7 @@ export default function CVPage() {
                   <div className="fi-cv-credential-item" key={c.code}>
                     <strong>{c.code}</strong>
                     <span>{c.label}</span>
+                    <small>{c.source}</small>
                   </div>
                 ))}
               </div>
@@ -134,7 +140,7 @@ export default function CVPage() {
             </div>
             <div className="fi-cv-timeline">
               {cvExperience.map((item) => (
-                <article className="fi-cv-timeline-row" key={item.id}>
+                <article className="fi-cv-timeline-row" data-status={item.status} key={item.id}>
                   <div className="fi-cv-timeline-meta">
                     <span className="fi-cv-entry-num">{item.number}</span>
                     <StatusBadge status={item.status} />
@@ -142,8 +148,8 @@ export default function CVPage() {
                   </div>
                   <div className="fi-cv-timeline-body">
                     <div className="fi-cv-timeline-title-row">
-                      <strong>{item.role}</strong>
-                      <em>{item.organization}</em>
+                      <strong>{item.displayTitle ?? item.role}</strong>
+                      {!item.displayTitle ? <em>{item.organization}</em> : null}
                     </div>
                     <p>{item.description}</p>
                   </div>
@@ -183,11 +189,59 @@ export default function CVPage() {
             </div>
           </section>
 
-          {/* SECTION 04 — Research & Publications */}
+          {/* SECTION 04 — Certifications */}
+          <section
+            aria-labelledby="cv-certifications-title"
+            className="fi-cv-certifications"
+            id="cv-certifications"
+          >
+            <div className="fi-cv-section-head">
+              <h2 id="cv-certifications-title">Sertifikasi</h2>
+              <span>Bagian 04 &middot; Kredensial Profesional</span>
+            </div>
+            <div className="fi-cv-cert-brief" aria-label="Ringkasan sertifikasi">
+              <div>
+                <span>Credential Registry</span>
+                <strong>AI, governance, developer programs, and institutional capability.</strong>
+              </div>
+              <dl>
+                <div>
+                  <dt>2026</dt>
+                  <dd>7 AI certifications</dd>
+                </div>
+                <div>
+                  <dt>2025</dt>
+                  <dd>5 AI and developer credentials</dd>
+                </div>
+              </dl>
+            </div>
+            <div className="fi-cv-cert-grid">
+              {cvCertifications.map((credential) => {
+                const year = credential.source.includes('2026')
+                  ? '2026'
+                  : credential.source.includes('2025')
+                    ? '2025'
+                    : 'Professional'
+
+                return (
+                  <article className="fi-cv-cert-card" data-year={year} key={credential.code}>
+                    <div className="fi-cv-cert-year">{year}</div>
+                    <div className="fi-cv-cert-copy">
+                      <span>{credential.source}</span>
+                      <strong>{credential.code}</strong>
+                      <p>{credential.label}</p>
+                    </div>
+                  </article>
+                )
+              })}
+            </div>
+          </section>
+
+          {/* SECTION 05 — Research & Publications */}
           <section aria-labelledby="cv-research-title" className="fi-cv-research" id="cv-research">
             <div className="fi-cv-section-head">
               <h2 id="cv-research-title">Riset &amp; Publikasi</h2>
-              <span>Bagian 04</span>
+              <span>Bagian 05</span>
             </div>
             <div className="fi-cv-publications">
               {cvPublications.map((pub) => (
@@ -214,11 +268,11 @@ export default function CVPage() {
             </div>
           </section>
 
-          {/* SECTION 05 — Download */}
+          {/* SECTION 06 — Download */}
           <section aria-labelledby="cv-download-title" className="fi-cv-download" id="cv-download">
             <div className="fi-cv-section-head">
               <h2 id="cv-download-title">CV Lengkap</h2>
-              <span>Bagian 05 &middot; Dokumen PDF</span>
+              <span>Bagian 06 &middot; Dokumen PDF</span>
             </div>
             <div className="fi-cv-download-body">
               <div className="fi-cv-download-copy">
@@ -250,16 +304,7 @@ export default function CVPage() {
             <strong>Sekilas</strong>
             <span>Ringkasan kredensial</span>
           </div>
-          {cvGlanceSections.map((section) => (
-            <section key={section.title}>
-              <h3>{section.title}</h3>
-              <ul>
-                {section.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </section>
-          ))}
+          <DossierGlanceSections sections={cvGlanceSections} />
         </aside>
       </main>
       <Footer />

@@ -4,7 +4,6 @@
    Direction: Founder Editorial / Clinical Intelligence Monograph
    ============================================ */
 
-@import '@the-abyss/design-token/ferdi-editorial.css';
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 /* ============ BASE RESET ============ */
@@ -292,6 +291,8 @@ button:focus-visible,
   line-height: 1.58;
 }
 .fi-hero-clean {
+  --fi-blueprint-accent: rgba(231, 201, 126, 0.86);
+  --fi-blueprint-stroke: rgba(236, 231, 215, 0.72);
   min-height: auto;
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -9020,6 +9021,7 @@ button:focus-visible,
   letter-spacing: 0.06em;
   color: var(--fi-gold);
   line-height: 1.45;
+  overflow-wrap: anywhere;
 }
 
 /* Section head */
@@ -9614,11 +9616,17 @@ button:focus-visible,
    ============================================================ */
 
 #cv-page.fi-cv-dossier {
+  --fi-bg: #f7f3ec;
+  --fi-surface: #fffdf8;
+  --fi-text: #111318;
+  --fi-muted: #60646f;
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
-  background: var(--fi-bg);
+  background: var(--fi-bg) !important;
   color: var(--fi-text);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 #cv-page .fi-cv-dossier-shell {
@@ -9889,9 +9897,14 @@ button:focus-visible,
 #cv-page .fi-cv-hero-photo {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: var(--fi-surface);
+}
+
+#cv-page .fi-cv-hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 #cv-page .fi-cv-hero-photo::after {
@@ -9938,6 +9951,14 @@ button:focus-visible,
   font-size: clamp(11px, 0.85vw, 13px);
   color: var(--fi-muted);
   line-height: 1.35;
+}
+
+#cv-page .fi-cv-credential-item small {
+  font-family: 'Fragment Mono', monospace;
+  font-size: 10px;
+  color: color-mix(in srgb, var(--fi-muted) 78%, transparent);
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
 /* ---- PROFILE SECTION ---- */
@@ -10057,6 +10078,165 @@ button:focus-visible,
   font-size: 13px;
   line-height: 1.7;
   color: var(--fi-muted);
+}
+
+/* ---- CERTIFICATIONS ---- */
+
+#cv-page .fi-cv-certifications {
+  padding: clamp(24px, 4vw, 44px);
+  border: 1px solid var(--fi-line);
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--fi-page-panel-bg-soft) 92%, var(--fi-bg) 8%);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--fi-white) 5%, transparent),
+    0 24px 48px -24px color-mix(in srgb, var(--fi-bg) 82%, transparent);
+}
+
+#cv-page .fi-cv-certifications::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--fi-white) 22%, transparent),
+    transparent
+  );
+  pointer-events: none;
+}
+
+#cv-page .fi-cv-cert-brief {
+  margin-top: clamp(18px, 2.4vw, 28px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+  border: 1px solid var(--fi-line);
+  background: color-mix(in srgb, var(--fi-bg) 48%, var(--fi-page-panel-bg-soft) 52%);
+}
+
+#cv-page .fi-cv-cert-brief > div:first-child {
+  padding: clamp(18px, 2.4vw, 28px);
+  display: grid;
+  gap: 8px;
+}
+
+#cv-page .fi-cv-cert-brief span,
+#cv-page .fi-cv-cert-card span,
+#cv-page .fi-cv-cert-year {
+  font-family: 'Fragment Mono', monospace;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  color: var(--fi-muted);
+  text-transform: uppercase;
+}
+
+#cv-page .fi-cv-cert-brief strong {
+  max-width: 720px;
+  font-family: var(--fi-dossier-display-font);
+  font-size: clamp(22px, 2.4vw, 36px);
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--fi-text);
+}
+
+#cv-page .fi-cv-cert-brief dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-left: 1px solid var(--fi-line);
+  background: color-mix(in srgb, var(--fi-bg) 62%, transparent);
+}
+
+#cv-page .fi-cv-cert-brief dl > div {
+  padding: clamp(18px, 2vw, 24px);
+  display: grid;
+  align-content: center;
+  gap: 6px;
+  /* NEU ACCENT #1 — inset credential metric cell */
+  box-shadow:
+    inset 2px 2px 4px color-mix(in srgb, var(--fi-bg) 40%, transparent),
+    inset -1px -1px 2px color-mix(in srgb, var(--fi-white) 2%, transparent);
+}
+
+#cv-page .fi-cv-cert-brief dl > div + div {
+  border-left: 1px solid var(--fi-line);
+}
+
+#cv-page .fi-cv-cert-brief dt {
+  font-family: 'Fragment Mono', monospace;
+  font-size: clamp(24px, 3vw, 42px);
+  line-height: 1;
+  color: var(--fi-gold);
+}
+
+#cv-page .fi-cv-cert-brief dd {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--fi-muted);
+}
+
+#cv-page .fi-cv-cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+#cv-page .fi-cv-cert-card {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  min-height: 142px;
+  border: 1px solid var(--fi-line);
+  background: color-mix(in srgb, var(--fi-page-panel-bg) 88%, var(--fi-bg) 12%);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  /* NEU ACCENT #2 — raised credential card */
+  box-shadow:
+    3px 3px 8px color-mix(in srgb, var(--fi-bg) 42%, transparent),
+    -2px -2px 6px color-mix(in srgb, var(--fi-white) 3%, transparent);
+}
+
+#cv-page .fi-cv-cert-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--fi-gold) 28%, var(--fi-line));
+}
+
+#cv-page .fi-cv-cert-year {
+  padding: 18px 12px;
+  display: grid;
+  place-items: start center;
+  border-right: 1px solid var(--fi-line);
+  color: var(--fi-gold);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+#cv-page .fi-cv-cert-copy {
+  min-width: 0;
+  padding: clamp(18px, 2vw, 24px);
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+#cv-page .fi-cv-cert-copy strong {
+  font-family: 'Fragment Mono', monospace;
+  font-size: clamp(18px, 2vw, 30px);
+  color: var(--fi-gold);
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+
+#cv-page .fi-cv-cert-copy p {
+  margin: 0;
+  color: var(--fi-text);
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.45;
 }
 
 /* ---- STATUS BADGE ---- */
@@ -10370,6 +10550,19 @@ button:focus-visible,
     gap: 12px;
   }
 
+  #cv-page .fi-cv-cert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #cv-page .fi-cv-cert-brief {
+    grid-template-columns: 1fr;
+  }
+
+  #cv-page .fi-cv-cert-brief dl {
+    border-top: 1px solid var(--fi-line);
+    border-left: 0;
+  }
+
   #cv-page .fi-cv-download-body {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -10391,6 +10584,26 @@ button:focus-visible,
 }
 
 @media (max-width: 480px) {
+  #cv-page .fi-cv-cert-brief dl {
+    grid-template-columns: 1fr;
+  }
+
+  #cv-page .fi-cv-cert-brief dl > div + div {
+    border-top: 1px solid var(--fi-line);
+    border-left: 0;
+  }
+
+  #cv-page .fi-cv-cert-card {
+    grid-template-columns: 1fr;
+  }
+
+  #cv-page .fi-cv-cert-year {
+    place-items: center start;
+    border-right: 0;
+    border-bottom: 1px solid var(--fi-line);
+    writing-mode: horizontal-tb;
+  }
+
   #cv-page .fi-cv-hero-credential-strip {
     grid-template-columns: 1fr;
   }
@@ -11913,6 +12126,10 @@ button:focus-visible,
   border: 1px solid var(--fi-line);
 }
 
+.fi-home-news-spotlight-section-head {
+  margin-bottom: clamp(20px, 3vw, 40px);
+}
+
 .fi-home-news-spotlight-shell {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 0.78fr);
@@ -12857,6 +13074,282 @@ button:focus-visible,
   background: var(--fi-page-panel-bg-soft) !important;
 }
 
+/* ============================================================
+   CV DESIGN REFRESH
+   Scope: /cv career registry, Clinical Aura dossier treatment
+   ============================================================ */
+
+#cv-page.fi-cv-dossier {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--fi-surface) 18%, transparent), transparent 42rem),
+    linear-gradient(90deg, color-mix(in srgb, var(--fi-line) 36%, transparent) 1px, transparent 1px),
+    var(--fi-bg) !important;
+  background-size: auto, minmax(64px, 6vw) minmax(64px, 6vw), auto;
+}
+
+#cv-page :is(.fi-cv-hero, .fi-cv-profile, .fi-cv-experience, .fi-cv-education, .fi-cv-research, .fi-cv-download-body) {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--fi-line) 74%, var(--fi-gold) 26%) !important;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--fi-page-panel-bg) 90%, var(--fi-gold) 10%), var(--fi-page-panel-bg)),
+    var(--fi-page-panel-bg) !important;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--fi-line) 54%, transparent),
+    0 28px 70px -44px color-mix(in srgb, var(--fi-gold) 30%, transparent);
+}
+
+#cv-page :is(.fi-cv-hero, .fi-cv-profile, .fi-cv-experience, .fi-cv-education, .fi-cv-research, .fi-cv-download-body)::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--fi-gold) 56%, var(--fi-white) 44%), transparent);
+  pointer-events: none;
+}
+
+#cv-page .fi-cv-hero {
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr) !important;
+  align-items: stretch !important;
+  min-height: clamp(620px, 72vh, 820px);
+  padding: clamp(28px, 4vw, 56px) !important;
+}
+
+#cv-page .fi-cv-hero-copy {
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+#cv-page .fi-cv-hero-profile-eyebrow {
+  width: fit-content;
+  padding: 7px 10px;
+  border: 1px solid var(--fi-line);
+  background: color-mix(in srgb, var(--fi-bg) 50%, transparent);
+}
+
+#cv-page .fi-cv-hero-ledger {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--fi-line);
+  background: color-mix(in srgb, var(--fi-bg) 48%, transparent);
+  /* NEU ACCENT #1 — inset registry trough */
+  box-shadow:
+    inset 2px 2px 4px color-mix(in srgb, var(--fi-bg) 68%, transparent),
+    inset -1px -1px 2px color-mix(in srgb, var(--fi-white) 4%, transparent);
+}
+
+#cv-page .fi-cv-hero-ledger-item {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  min-height: 126px;
+  padding: clamp(14px, 1.5vw, 20px);
+  border-right: 1px solid var(--fi-line);
+}
+
+#cv-page .fi-cv-hero-ledger-item:last-child {
+  border-right: 0;
+}
+
+#cv-page .fi-cv-hero-ledger-item span,
+#cv-page .fi-cv-hero-ledger-item em {
+  font-family: var(--fi-dossier-label-font) !important;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fi-muted);
+}
+
+#cv-page .fi-cv-hero-ledger-item span {
+  font-size: 10px;
+}
+
+#cv-page .fi-cv-hero-ledger-item strong {
+  font-family: var(--fi-dossier-display-font) !important;
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--fi-text);
+}
+
+#cv-page .fi-cv-hero-ledger-item em {
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+#cv-page .fi-cv-hero-portrait {
+  position: relative;
+}
+
+#cv-page .fi-cv-hero-photo {
+  min-height: 0;
+  border: 1px solid var(--fi-line);
+  filter: saturate(0.88) contrast(1.03);
+}
+
+#cv-page .fi-cv-hero-photo::before {
+  content: 'Credential Portrait';
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  left: 14px;
+  padding: 6px 9px;
+  border: 1px solid var(--fi-line);
+  background: color-mix(in srgb, var(--fi-bg) 72%, transparent);
+  color: var(--fi-muted);
+  font-family: var(--fi-dossier-label-font);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+#cv-page .fi-cv-hero-credential-strip {
+  background: color-mix(in srgb, var(--fi-page-panel-bg-soft) 86%, var(--fi-bg) 14%);
+  /* NEU ACCENT #2 — raised credential selector surface */
+  box-shadow:
+    3px 3px 8px color-mix(in srgb, var(--fi-bg) 44%, transparent),
+    -2px -2px 6px color-mix(in srgb, var(--fi-white) 4%, transparent);
+}
+
+#cv-page .fi-cv-credential-item {
+  min-height: 108px;
+  justify-content: center;
+}
+
+#cv-page .fi-cv-timeline {
+  gap: 12px;
+}
+
+#cv-page .fi-cv-timeline-row,
+#cv-page .fi-cv-pub-card {
+  position: relative;
+  grid-template-columns: minmax(118px, 0.18fr) minmax(0, 1fr);
+  padding: clamp(18px, 2vw, 26px);
+  border: 1px solid var(--fi-line);
+  background: color-mix(in srgb, var(--fi-page-panel-bg-soft) 84%, transparent);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+#cv-page .fi-cv-timeline-row:hover,
+#cv-page .fi-cv-pub-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--fi-line) 62%, var(--fi-gold) 38%);
+}
+
+#cv-page .fi-cv-timeline-row[data-status='current']::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: color-mix(in srgb, var(--fi-gold) 76%, transparent);
+}
+
+#cv-page .fi-cv-timeline-meta {
+  padding-top: 0;
+}
+
+#cv-page .fi-cv-timeline-years {
+  color: var(--fi-text);
+}
+
+#cv-page .fi-cv-timeline-title-row strong {
+  font-family: var(--fi-dossier-display-font) !important;
+  font-size: clamp(18px, 1.65vw, 25px);
+  font-weight: 500;
+  line-height: 1.12;
+}
+
+#cv-page .fi-cv-badge {
+  border-radius: 0;
+}
+
+#cv-page .fi-cv-index-card,
+#cv-page .fi-cv-glance section,
+#cv-page .fi-cv-glance-head {
+  position: relative;
+  overflow: hidden;
+}
+
+#cv-page :is(.fi-cv-index-card, .fi-cv-glance section, .fi-cv-glance-head)::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--fi-gold) 44%, transparent), transparent);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  #cv-page .fi-nav-editorial-shell {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  #cv-page .fi-nav-editorial-links {
+    min-width: max-content;
+  }
+
+  #cv-page .fi-cv-hero {
+    grid-template-columns: 1fr !important;
+    min-height: unset;
+    padding: 28px !important;
+  }
+
+  #cv-page .fi-cv-hero-credentials {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  #cv-page .fi-cv-hero-ledger {
+    grid-template-columns: 1fr;
+  }
+
+  #cv-page .fi-cv-hero-ledger-item {
+    min-height: unset;
+    border-right: 0;
+    border-bottom: 1px solid var(--fi-line);
+  }
+
+  #cv-page .fi-cv-hero-ledger-item:last-child {
+    border-bottom: 0;
+  }
+
+  #cv-page .fi-cv-hero-photo {
+    min-height: 0;
+    max-height: 620px;
+  }
+}
+
+@media (max-width: 520px) {
+  #cv-page .fi-cv-hero {
+    padding: 22px !important;
+  }
+
+  #cv-page .fi-cv-hero-photo {
+    max-height: 520px;
+  }
+}
+
+@media print {
+  html:has(#cv-page),
+  body:has(#cv-page) {
+    background: #f7f3ec !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #cv-page,
+  #cv-page * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #cv-page.fi-cv-dossier {
+    background: #f7f3ec !important;
+    color: #111318 !important;
+  }
+}
+
 #notes-page .fi-notes-reading-desk {
   background: #171412 !important;
 }
@@ -12890,4 +13383,389 @@ button:focus-visible,
     width: var(--fi-page-shell-width) !important;
     padding-top: 28px !important;
   }
+}
+
+/* ─── Editorial Blueprint Reveal ─────────────────────────────────────────── */
+
+.fi-blueprint-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+  mix-blend-mode: screen;
+}
+
+/* Vertical margin guide lines — hidden on mobile to avoid visual clutter */
+@media (max-width: 640px) {
+  .fi-blueprint-guide {
+    display: none;
+  }
+}
+
+/* ============================================
+   PHASE 1 — 2026 MICRO-INTERACTIONS & CURSOR
+   ============================================ */
+
+
+.fi-custom-cursor.is-hovering {
+  width: 48px;
+  height: 48px;
+  border-color: var(--fi-gold);
+  background: rgba(170, 133, 72, 0.08);
+}
+
+.fi-custom-cursor.is-clicking {
+  width: 16px;
+  height: 16px;
+  background: var(--fi-ink);
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .fi-custom-cursor {
+    display: none !important;
+  }
+}
+
+/* ─── Micro-interaction: Magnetic Buttons ───────────────────────────────── */
+.fi-magnetic-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fi-magnetic-btn:hover {
+  transform: translateY(-2px);
+}
+
+.fi-magnetic-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ─── Micro-interaction: Card Lift ──────────────────────────────────────── */
+.fi-card-lift {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fi-card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(13, 42, 70, 0.12), 0 8px 16px rgba(13, 42, 70, 0.08);
+}
+
+/* ─── Micro-interaction: Link Underline Draw ────────────────────────────── */
+.fi-link-draw {
+  position: relative;
+  text-decoration: none;
+}
+
+.fi-link-draw::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fi-link-draw:hover::after {
+  width: 100%;
+}
+
+/* ─── Micro-interaction: Focus Ring Enhancement ─────────────────────────── */
+.fi-focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(170, 133, 72, 0.3), 0 0 0 1px var(--fi-gold);
+  border-radius: 4px;
+}
+
+/* ─── Micro-interaction: Text Scramble Placeholder ──────────────────────── */
+.fi-text-scramble {
+  display: inline-block;
+  transition: opacity 0.15s ease;
+}
+
+.fi-text-scramble:hover {
+  opacity: 0.7;
+}
+
+/* ─── Micro-interaction: Stagger Children Hover ─────────────────────────── */
+.fi-stagger-hover > * {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fi-stagger-hover:hover > * {
+  opacity: 0.6;
+}
+
+.fi-stagger-hover > *:hover {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* ─── Micro-interaction: Button Ripple Effect ───────────────────────────── */
+.fi-btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.fi-btn-ripple::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.fi-btn-ripple:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* ─── Micro-interaction: Image Zoom on Hover ────────────────────────────── */
+.fi-img-zoom {
+  overflow: hidden;
+}
+
+.fi-img-zoom img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fi-img-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* ─── Micro-interaction: Nav Link Slide ─────────────────────────────────── */
+.fi-nav-slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.fi-nav-slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(170, 133, 72, 0.06), transparent);
+  transition: left 0.4s ease;
+}
+
+.fi-nav-slide:hover::before {
+  left: 100%;
+}
+
+/* ============================================
+   ABOUT PAGE — LAYOUT VARIATION (2026)
+   Full-bleed manifesto with pull quotes
+   ============================================ */
+
+/* Full-bleed manifesto section */
+.fi-about-manifesto-fullbleed {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: clamp(80px, 12vw, 160px) clamp(20px, 4vw, 72px);
+  background: linear-gradient(180deg, var(--fi-paper-2) 0%, var(--fi-paper) 100%);
+  border-top: 1px solid var(--fi-line);
+  border-bottom: 1px solid var(--fi-line);
+}
+
+.fi-about-manifesto-fullbleed blockquote {
+  max-width: 880px;
+  margin: 0 auto;
+  font-family: Georgia, serif;
+  font-size: clamp(24px, 3.2vw, 42px);
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+  color: var(--fi-ink);
+  text-align: center;
+  font-style: italic;
+}
+
+.fi-about-manifesto-fullbleed blockquote::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--fi-gold);
+  margin: 0 auto clamp(32px, 4vw, 48px);
+}
+
+/* Large pull quote variation */
+.fi-about-pull-quote-large {
+  position: relative;
+  padding: clamp(48px, 6vw, 80px) 0;
+  margin: clamp(48px, 6vw, 80px) 0;
+  border-left: 3px solid var(--fi-gold);
+  padding-left: clamp(28px, 3vw, 48px);
+}
+
+.fi-about-pull-quote-large p {
+  font-family: Georgia, serif;
+  font-size: clamp(22px, 2.8vw, 36px);
+  line-height: 1.22;
+  letter-spacing: -0.03em;
+  color: var(--fi-blue-2);
+  font-style: italic;
+  max-width: 720px;
+}
+
+.fi-about-pull-quote-large cite {
+  display: block;
+  margin-top: clamp(20px, 2vw, 32px);
+  font-size: 12px;
+  font-weight: 760;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fi-muted);
+  font-style: normal;
+}
+
+/* Registry panels with card lift */
+.fi-about-registry-panel {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fi-about-registry-panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(13, 42, 70, 0.08);
+}
+
+/* Principles row with stagger hover */
+.fi-about-principles-list {
+  display: grid;
+  gap: 1px;
+}
+
+.fi-about-principle-row {
+  padding: clamp(18px, 2vw, 24px) 0;
+  border-bottom: 1px solid var(--fi-line);
+  transition: padding-left 0.3s ease, background 0.3s ease;
+  cursor: default;
+}
+
+.fi-about-principle-row:hover {
+  padding-left: 12px;
+  background: color-mix(in srgb, var(--fi-white) 50%, transparent);
+}
+
+.fi-about-principle-row:last-child {
+  border-bottom: 0;
+}
+
+/* Systems bridge with link draw */
+.fi-about-systems-bridge a {
+  position: relative;
+  text-decoration: none;
+}
+
+.fi-about-systems-bridge a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fi-about-systems-bridge a:hover::after {
+  width: 100%;
+}
+
+/* Authority signals with image zoom */
+.fi-about-authority-signal {
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.fi-about-authority-signal img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fi-about-authority-signal:hover img {
+  transform: scale(1.05);
+}
+
+/* Closing card with lift */
+.fi-about-closing-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fi-about-closing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(13, 42, 70, 0.1);
+}
+
+/* ============================================
+   SMOOTH SCROLL ENHANCEMENTS (2026)
+   ============================================ */
+
+/* Global smooth scroll dengan momentum */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Scroll snap untuk homepage sections */
+.fi-shell {
+  scroll-snap-type: y proximity;
+}
+
+.fi-shell > section,
+.fi-shell > div[id] {
+  scroll-snap-align: start;
+  scroll-margin-top: 80px;
+}
+
+/* Smooth scroll pada elemen dengan overflow */
+.fi-about-main,
+.fi-works-main,
+.fi-notes-main,
+.fi-speaking-main,
+.fi-cv-main,
+.fi-news-main {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar styling yang lebih halus */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--fi-paper-2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--fi-line);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--fi-muted);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--fi-line) var(--fi-paper-2);
 }
