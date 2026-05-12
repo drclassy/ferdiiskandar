@@ -12,6 +12,7 @@ const contentSecurityPolicy = [
     ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
     : "script-src 'self' 'unsafe-inline'",
   isDevelopment ? "connect-src 'self' https: ws: wss:" : "connect-src 'self' https:",
+  "worker-src 'self' blob:",
 ].join('; ')
 
 /** @type {import('next').NextConfig} */

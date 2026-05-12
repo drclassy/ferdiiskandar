@@ -1,20 +1,16 @@
 import { type NextRequest } from 'next/server'
 
-import { ABBY_KNOWLEDGE, ABBY_SYSTEM_PROMPT } from '@/lib/abby-knowledge'
+import { ABBY_KNOWLEDGE, ABBY_SYSTEM_PROMPT } from '../../../lib/abby-knowledge'
+import { createFixedWindowRateLimiter, getClientKey } from '../../../lib/rate-limit'
 
 export const runtime = 'nodejs'
 
 const WINDOW_MS = 60_000
 const MAX_REQUESTS_PER_WINDOW = 20
-const ipBuckets = new Map<string, { count: number; resetAt: number }>()
-
-// Purge expired rate-limit entries once per window to prevent unbounded growth
-setInterval(() => {
-  const now = Date.now()
-  for (const [key, bucket] of ipBuckets) {
-    if (now > bucket.resetAt) ipBuckets.delete(key)
-  }
-}, WINDOW_MS)
+const rateLimiter = createFixedWindowRateLimiter({
+  maxRequests: MAX_REQUESTS_PER_WINDOW,
+  windowMs: WINDOW_MS,
+})
 
 type ChatRole = 'user' | 'assistant'
 interface HistoryItem {
@@ -95,28 +91,10 @@ function normalizeAssistantReply(content: string): string {
     .trim()
 }
 
-function getClientKey(request: NextRequest): string {
-  const forwardedFor = request.headers.get('x-forwarded-for')
-  if (forwardedFor) return forwardedFor.split(',')[0]?.trim() || 'unknown'
-  return request.headers.get('x-real-ip') ?? 'unknown'
-}
-
-function isRateLimited(clientKey: string): boolean {
-  const now = Date.now()
-  const existing = ipBuckets.get(clientKey)
-  if (!existing || now > existing.resetAt) {
-    ipBuckets.set(clientKey, { count: 1, resetAt: now + WINDOW_MS })
-    return false
-  }
-  if (existing.count >= MAX_REQUESTS_PER_WINDOW) return true
-  existing.count += 1
-  return false
-}
-
 export async function POST(request: NextRequest) {
   try {
     const clientKey = getClientKey(request)
-    if (isRateLimited(clientKey)) {
+    if (rateLimiter.isRateLimited(clientKey)) {
       return problem(
         429,
         'Rate Limit Exceeded',

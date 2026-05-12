@@ -1,12 +1,16 @@
 import { type NextRequest } from 'next/server'
 
 import { CHAT_SYSTEM_PROMPT } from '@/lib/chat-knowledge'
+import { createFixedWindowRateLimiter, getClientKey } from '@/lib/rate-limit'
 
 const NVIDIA_BASE_URL = 'https://integrate.api.nvidia.com/v1'
 const MODEL = 'meta/llama-3.3-70b-instruct'
 const WINDOW_MS = 60_000
 const MAX_REQUESTS_PER_WINDOW = 20
-const ipBuckets = new Map<string, { count: number; resetAt: number }>()
+const rateLimiter = createFixedWindowRateLimiter({
+  maxRequests: MAX_REQUESTS_PER_WINDOW,
+  windowMs: WINDOW_MS,
+})
 
 function jsonHeaders(): HeadersInit {
   return {
@@ -30,32 +34,10 @@ function problem(status: number, title: string, detail: string, type: string) {
   )
 }
 
-function getClientKey(request: NextRequest): string {
-  const forwardedFor = request.headers.get('x-forwarded-for')
-  if (forwardedFor) {
-    return forwardedFor.split(',')[0]?.trim() || 'unknown'
-  }
-  return request.headers.get('x-real-ip') ?? 'unknown'
-}
-
-function isRateLimited(clientKey: string): boolean {
-  const now = Date.now()
-  const existing = ipBuckets.get(clientKey)
-  if (!existing || now > existing.resetAt) {
-    ipBuckets.set(clientKey, { count: 1, resetAt: now + WINDOW_MS })
-    return false
-  }
-  if (existing.count >= MAX_REQUESTS_PER_WINDOW) {
-    return true
-  }
-  existing.count += 1
-  return false
-}
-
 export async function POST(request: NextRequest) {
   try {
     const clientKey = getClientKey(request)
-    if (isRateLimited(clientKey)) {
+    if (rateLimiter.isRateLimited(clientKey)) {
       return problem(
         429,
         'Rate Limit Exceeded',
