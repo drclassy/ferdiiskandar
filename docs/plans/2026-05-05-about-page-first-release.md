@@ -1,6 +1,6 @@
 # About Page First Release Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** Implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build the first real `/about` route as a layered authority page that extends the current founder-profile site with professional positioning, manifesto, authority signals, and a calm invitation into further conversation.
 
@@ -199,7 +199,7 @@ export const aboutClosing = {
 } as const
 ```
 
-- [ ] **Step 4: Editorial self-check before handoff**
+- [ ] **Step 4: Editorial self-check before closeout**
 
 Confirm the content draft follows these rules before handing it to route implementation:
 

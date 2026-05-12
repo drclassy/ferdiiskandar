@@ -4,6 +4,7 @@ import path from 'node:path'
 const cwd = process.cwd()
 
 const CONTENT_FILES = [
+  'conversation-style.md',
   'personal-profile.md',
   'professional-journey.md',
   'speaking-profile.md',
@@ -11,7 +12,10 @@ const CONTENT_FILES = [
   'projects-and-works.md',
   'media-kit.md',
   'contact-and-collaboration.md',
+  'public-boundaries.md',
   'faq.md',
+  'response-examples.md',
+  'qa-test-set.md',
 ]
 
 function readFile(filePath: string): string {

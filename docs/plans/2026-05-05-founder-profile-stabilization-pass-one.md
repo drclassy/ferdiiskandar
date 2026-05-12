@@ -1,6 +1,6 @@
 # Founder Profile Stabilization Pass One Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** Implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Stabilize the current founder-profile landing page so it runs cleanly, removes trust-breaking unfinished surfaces, preserves the existing editorial identity, and is ready to grow into a multi-page site later.
 

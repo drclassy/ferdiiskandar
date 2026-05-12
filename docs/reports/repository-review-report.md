@@ -20,7 +20,7 @@ This repository is a Next.js + React + TypeScript application with an API route 
 - `.vscode`
 - `app` (`about`, `api/chat`, metadata routes)
 - `components` (`ui`, section components)
-- `docs` (`superpowers`, `architecture.md`)
+- `docs` (`archive`, `plans`, `specs`, `architecture.md`)
 - `lib`
 - `public`
 - `scripts`
@@ -31,12 +31,12 @@ This repository is a Next.js + React + TypeScript application with an API route 
 Added/updated the following to meet baseline professional documentation requirements:
 
 - `README.md`
-- `CONTRIBUTING.md`
-- `CODE_OF_CONDUCT.md`
+- `docs/governance/contributing.md`
+- `docs/governance/code-of-conduct.md`
 - `SECURITY.md`
 - `CHANGELOG.md`
 - `LICENSE` (MIT)
-- `COMMIT_CONVENTION.md`
+- `docs/governance/commit-convention.md`
 - `docs/architecture.md`
 - `.env.example`
 

@@ -130,17 +130,17 @@ Use this to resume cleanly:
 - [lib/site-content.ts](/v:/class-sentra/class-prototype/ferdiiskandar/lib/site-content.ts)
 - [lib/about-content.ts](/v:/class-sentra/class-prototype/ferdiiskandar/lib/about-content.ts)
 - [app/globals.css](/v:/class-sentra/class-prototype/ferdiiskandar/app/globals.css)
-- [docs/superpowers/specs/2026-05-05-founder-profile-stabilization-design.md](/v:/class-sentra/class-prototype/ferdiiskandar/docs/superpowers/specs/2026-05-05-founder-profile-stabilization-design.md)
-- [docs/superpowers/specs/2026-05-05-about-page-design.md](/v:/class-sentra/class-prototype/ferdiiskandar/docs/superpowers/specs/2026-05-05-about-page-design.md)
-- [docs/superpowers/specs/2026-05-05-content-repositioning-design.md](/v:/class-sentra/class-prototype/ferdiiskandar/docs/superpowers/specs/2026-05-05-content-repositioning-design.md)
+- [docs/specs/2026-05-05-founder-profile-stabilization-design.md](/v:/sentra-artificial-intelligence/abyss-monorepo/apps/corporate/ferdiiskandar/docs/specs/2026-05-05-founder-profile-stabilization-design.md)
+- [docs/specs/2026-05-05-about-page-design.md](/v:/sentra-artificial-intelligence/abyss-monorepo/apps/corporate/ferdiiskandar/docs/specs/2026-05-05-about-page-design.md)
+- [docs/specs/2026-05-05-content-repositioning-design.md](/v:/sentra-artificial-intelligence/abyss-monorepo/apps/corporate/ferdiiskandar/docs/specs/2026-05-05-content-repositioning-design.md)
 
 ## Working Tree Note
 
-Current untracked items seen during handoff creation:
+Current untracked items seen during archived session-note creation:
 
 - `.continue/`
 - `.next-dev.err.log`
 - `.next-dev.out.log`
 - `.vscode/`
 
-They were not modified as part of this handoff step.
+They were not modified as part of this archived note.
