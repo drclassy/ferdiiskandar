@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { DossierIndexNav } from '@/components/DossierShared'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import {
@@ -18,6 +19,34 @@ import {
   classyNewsTrendingStories,
 } from '@/lib/classy-news-content'
 
+type NewsStorySummary = {
+  category: string
+  headline: string
+  summary: string
+  date: string
+  source: string
+}
+
+function NewsStoryCopy({
+  className,
+  categoryClassName = 'fi-news-panel-label',
+  story,
+}: {
+  categoryClassName?: string | null
+  className: string
+  story: NewsStorySummary
+}) {
+  return (
+    <div className={className}>
+      <span className={categoryClassName ?? undefined}>{story.category}</span>
+      <h3>{story.headline}</h3>
+      <p>{story.summary}</p>
+      <small className="fi-news-story-date">{story.date}</small>
+      <small className="fi-news-source-line">{story.source}</small>
+    </div>
+  )
+}
+
 export default function ClassyNewsPage() {
   return (
     <div className="fi-page-news fi-news-dossier" id="classy-news-page">
@@ -26,13 +55,7 @@ export default function ClassyNewsPage() {
         <aside aria-label="Indeks bagian halaman berita" className="fi-news-index">
           <div className="fi-news-index-title">Indeks Edisi</div>
           <nav aria-label="Urutan baca halaman berita" className="fi-news-index-nav">
-            {classyNewsIndexEntries.map((item) => (
-              <Link href={item.href} key={item.number}>
-                <span>{item.number}</span>
-                <strong>{item.title}</strong>
-                <em>{item.detail}</em>
-              </Link>
-            ))}
+            <DossierIndexNav entries={classyNewsIndexEntries} />
           </nav>
           <div className="fi-news-index-card">
             <p>
@@ -134,13 +157,7 @@ export default function ClassyNewsPage() {
                     <span className="fi-news-story-number">
                       {String(index + 1).padStart(2, '0')}
                     </span>
-                    <div className="fi-news-secondary-copy">
-                      <span className="fi-news-panel-label">{story.category}</span>
-                      <h3>{story.headline}</h3>
-                      <p>{story.summary}</p>
-                      <small className="fi-news-story-date">{story.date}</small>
-                      <small className="fi-news-source-line">{story.source}</small>
-                    </div>
+                    <NewsStoryCopy className="fi-news-secondary-copy" story={story} />
                   </a>
                 </article>
               ))}
@@ -174,13 +191,11 @@ export default function ClassyNewsPage() {
                         src={story.image}
                       />
                     </div>
-                    <div className="fi-news-trending-copy">
-                      <span>{story.category}</span>
-                      <h3>{story.headline}</h3>
-                      <p>{story.summary}</p>
-                      <small className="fi-news-story-date">{story.date}</small>
-                      <small className="fi-news-source-line">{story.source}</small>
-                    </div>
+                    <NewsStoryCopy
+                      categoryClassName={null}
+                      className="fi-news-trending-copy"
+                      story={story}
+                    />
                   </a>
                 </article>
               ))}
@@ -214,13 +229,7 @@ export default function ClassyNewsPage() {
                         src={story.image}
                       />
                     </div>
-                    <div className="fi-news-depth-copy">
-                      <span className="fi-news-panel-label">{story.category}</span>
-                      <h3>{story.headline}</h3>
-                      <p>{story.summary}</p>
-                      <small className="fi-news-story-date">{story.date}</small>
-                      <small className="fi-news-source-line">{story.source}</small>
-                    </div>
+                    <NewsStoryCopy className="fi-news-depth-copy" story={story} />
                   </a>
                 </article>
               ))}
@@ -259,13 +268,7 @@ export default function ClassyNewsPage() {
                         src={story.image}
                       />
                     </div>
-                    <div className="fi-news-editorial-copy">
-                      <span className="fi-news-panel-label">{story.category}</span>
-                      <h3>{story.headline}</h3>
-                      <p>{story.summary}</p>
-                      <small className="fi-news-story-date">{story.date}</small>
-                      <small className="fi-news-source-line">{story.source}</small>
-                    </div>
+                    <NewsStoryCopy className="fi-news-editorial-copy" story={story} />
                   </a>
                 </article>
               ))}

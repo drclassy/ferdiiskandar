@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import type { CSSProperties } from 'react'
 
+import { DossierGlanceSections, DossierIndexNav } from '@/components/DossierShared'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import WorksBlueprint from '@/components/WorksBlueprint'
@@ -35,13 +35,7 @@ export default function WorksPage() {
         <aside aria-label="Indeks karya" className="fi-works-index">
           <div className="fi-works-index-title">Indeks Karya</div>
           <nav aria-label="Kategori karya" className="fi-works-index-nav">
-            {worksIndexEntries.map((item) => (
-              <Link href={item.href} key={item.number}>
-                <span>{item.number}</span>
-                <strong>{item.title}</strong>
-                <em>{item.detail}</em>
-              </Link>
-            ))}
+            <DossierIndexNav entries={worksIndexEntries} />
           </nav>
           <div className="fi-works-index-card">
             <p>
@@ -201,16 +195,7 @@ export default function WorksPage() {
             <strong>Sekilas</strong>
             <span>Registri pembangun</span>
           </div>
-          {worksGlanceSections.map((section) => (
-            <section key={section.title}>
-              <h3>{section.title}</h3>
-              <ul>
-                {section.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </section>
-          ))}
+          <DossierGlanceSections sections={worksGlanceSections} />
         </aside>
       </main>
       <Footer />

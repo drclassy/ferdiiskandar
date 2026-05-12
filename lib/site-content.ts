@@ -12,6 +12,7 @@ export const sectionIds = [
   { id: 'expertise', label: 'Prinsip Berpikir' },
   { id: 'portfolio', label: 'Inisiatif & Sistem' },
   { id: 'story-sentra', label: 'Perjalanan' },
+  { id: 'classy-news-spotlight', label: 'Sorotan Berita' },
   { id: 'contact', label: 'Kontak' },
 ] as const
 
@@ -23,13 +24,6 @@ export const primaryNav = [
   { label: 'Speaking', href: '/speaking' },
   { label: 'CV', href: '/cv' },
   { label: 'Kontak', href: '/#contact' },
-] as const
-
-export const futureRoutes = [
-  { label: 'Profil', href: '/about' },
-  { label: 'Sistem', href: '/systems' },
-  { label: 'Catatan', href: '/notes' },
-  { label: 'Kontak', href: '/contact' },
 ] as const
 
 export const contactCards = [

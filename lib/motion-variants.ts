@@ -1,24 +1,24 @@
 import type { Transition, Variants } from 'framer-motion'
 
-export const duration = {
+const duration = {
   fast: 0.3,
   medium: 0.6,
   slow: 1.2,
   epic: 2.0,
 } as const
 
-export const ease = {
+const ease = {
   entrance: [0.16, 1, 0.3, 1] as [number, number, number, number],
   exit: [0.7, 0, 0.84, 0] as [number, number, number, number],
   dramatic: [0.22, 1.61, 0.36, 1] as [number, number, number, number],
 } as const
 
 export const transitions: Record<string, Transition> = {
-  fast: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
-  medium: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-  slow: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
-  epic: { duration: 2.0, ease: [0.16, 1, 0.3, 1] },
-  dramatic: { duration: 0.6, ease: [0.22, 1.61, 0.36, 1] },
+  fast: { duration: duration.fast, ease: ease.entrance },
+  medium: { duration: duration.medium, ease: ease.entrance },
+  slow: { duration: duration.slow, ease: ease.entrance },
+  epic: { duration: duration.epic, ease: ease.entrance },
+  dramatic: { duration: duration.medium, ease: ease.dramatic },
 }
 
 export const motionVariants: Record<string, Variants> = {

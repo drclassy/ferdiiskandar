@@ -20,6 +20,8 @@ function StatusBadge({ status }: { status: string }) {
   const label =
     status === 'current'
       ? 'Saat Ini'
+      : status === 'forthcoming'
+        ? 'Forthcoming'
       : status === 'in-preparation'
         ? 'Dalam Persiapan'
         : status === 'under-review'
@@ -90,11 +92,11 @@ export default function CVPage() {
               <div className="fi-cv-hero-photo">
                 <Image
                   alt="dr. Ferdi Iskandar"
-                  height={941}
+                  height={450}
                   priority
                   sizes="(max-width: 900px) 100vw, 45vw"
-                  src="/drferdi.png"
-                  width={1672}
+                  src="/cdrferdi.png"
+                  width={800}
                 />
               </div>
               <div className="fi-cv-hero-credential-strip">
@@ -201,8 +203,15 @@ export default function CVPage() {
             </div>
             <div className="fi-cv-cert-brief" aria-label="Ringkasan sertifikasi">
               <div>
-                <span>Credential Registry</span>
-                <strong>AI, governance, developer programs, and institutional capability.</strong>
+                <span>Continuous Learning</span>
+                <strong>
+                  Sertifikasi ini dicatat bukan sebagai pusat klaim keahlian, tetapi sebagai jejak
+                  belajar berkelanjutan.
+                </strong>
+                <p>
+                  Memahami AI, governance, prompt engineering, dan sistem kecerdasan yang relevan
+                  dengan layanan kesehatan.
+                </p>
               </div>
               <dl>
                 <div>
@@ -225,6 +234,9 @@ export default function CVPage() {
 
                 return (
                   <article className="fi-cv-cert-card" data-year={year} key={credential.code}>
+                    <span className="fi-cv-cert-scope" data-scope={credential.scope}>
+                      {credential.scope === 'international' ? 'International' : 'Nasional'}
+                    </span>
                     <div className="fi-cv-cert-year">{year}</div>
                     <div className="fi-cv-cert-copy">
                       <span>{credential.source}</span>

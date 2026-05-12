@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Fragment } from 'react'
 
 import CountUp from '@/components/CountUp'
 import SectionNumberMark from '@/components/SectionNumberMark'
@@ -15,11 +16,164 @@ import {
 } from '@/lib/motion-variants'
 import { useMotionReady } from '@/lib/use-motion-ready'
 
+type RegistryItem = {
+  name: string
+  description: string
+}
+
+type RegistrySection = {
+  className?: string
+  dotTone: 'testing' | 'built' | 'inbuild' | 'planned'
+  title: string
+  items: readonly RegistryItem[]
+}
+
+type RegistryColumn = {
+  sections: readonly RegistrySection[]
+}
+
+type FeaturedSystem = {
+  articleClassName: string
+  description: string
+  descriptionClassName?: string
+  imageAlt: string
+  imageClassName: string
+  imageSrc: string
+  illustrationClassName: string
+  label: string
+  subtitle: string
+  title: string
+}
+
+const featuredSystems: readonly FeaturedSystem[] = [
+  {
+    articleClassName: 'fi-feature-card fi-feature-aadi',
+    description:
+      'AADI mengumpulkan, memverifikasi, dan mendokumentasikan informasi pasien secara otonom lintas sistem, sehingga gesekan saat admisi menurun dan akurasi meningkat sejak awal proses.',
+    descriptionClassName: 'fi-feature-body-italic',
+    imageAlt: 'Tampilan sistem AADI',
+    imageClassName: 'fi-feature-product-image fi-feature-product-image-aadi',
+    imageSrc: '/aadi.png',
+    illustrationClassName: 'fi-feature-illustration',
+    label: 'Sistem Unggulan 01',
+    subtitle: 'Kecerdasan Admisi dan Dokumentasi Otonom',
+    title: 'AADI',
+  },
+  {
+    articleClassName: 'fi-feature-card fi-feature-assist',
+    description:
+      'Sentra Assist adalah Chrome Side Panel berbasis AI yang membaca dokumen klinis, melakukan ekstraksi OCR, dan menerapkan algoritma field-matching probabilistik untuk membantu penyelesaian formulir EMR secara end-to-end dengan tinjauan klinisi.',
+    imageAlt: 'Tampilan sistem Sentra Assist',
+    imageClassName: 'fi-feature-product-image fi-feature-product-image-assist',
+    imageSrc: '/assist.webp',
+    illustrationClassName: 'fi-feature-illustration fi-assist-visual fi-sentra-assist-sketch',
+    label: 'Sistem Unggulan 02',
+    subtitle: 'Panel samping Chrome berbasis AI untuk kelengkapan EMR',
+    title: 'Sentra Assist',
+  },
+]
+
+const registryColumns: readonly RegistryColumn[] = [
+  {
+    sections: [
+      {
+        dotTone: 'testing',
+        title: 'Sedang Diuji · 6',
+        items: [
+          { name: 'AADI', description: 'Autonomous Artificial Diagnostic Intelligence' },
+          { name: 'Audrey', description: 'Voice-First Clinical Intelligence' },
+          { name: 'Intelligence Dashboard', description: 'Unified Clinical Operations Platform' },
+          { name: 'Sentra Assist', description: 'AI Chrome Side Panel for EMR Automation' },
+          { name: 'Telemedicine', description: 'Remote Clinical Consultation' },
+          { name: 'ReferraLink', description: 'Awareness-Intelligence Protocol' },
+        ],
+      },
+    ],
+  },
+  {
+    sections: [
+      {
+        dotTone: 'built',
+        title: 'Sudah Dibangun · 1',
+        items: [{ name: 'Med-Cognitive', description: 'Neural Memory Architecture for Clinical AI' }],
+      },
+      {
+        className: 'mt',
+        dotTone: 'inbuild',
+        title: 'Sedang Dibangun · 11',
+        items: [
+          { name: 'MELLY', description: 'Hyper-Personalized Augmented Virtual Agent' },
+          { name: 'Melinda Dashboard', description: 'Zero-Friction Interoperability Platform' },
+          { name: 'Melinda Shield', description: 'Cognitive Cybersecurity Infrastructure' },
+          { name: 'Autonomous Admission', description: 'Admission & Journey Tracking' },
+          { name: 'Smart Triage', description: 'Pediatric & Maternal Algorithmic Assessment' },
+        ],
+      },
+    ],
+  },
+  {
+    sections: [
+      {
+        dotTone: 'inbuild',
+        title: 'Pembangunan Berlanjut',
+        items: [
+          { name: 'Proactive Care Navigator', description: 'Post-Partum & Preventive Monitoring' },
+          { name: 'Ambient Scribe', description: 'Clinical Voice-to-EMR Engine' },
+          { name: 'Critical Alert System', description: 'Proactive NICU & Telemetry Intelligence' },
+          { name: 'Predictive Bed Management', description: 'Autonomous Turnaround Orchestration' },
+          { name: 'Hospital management Auditor', description: 'Clinical Coding & Claim Defense' },
+          { name: 'Hospital Orchestrator', description: 'Smart Operating Room Logistics' },
+        ],
+      },
+    ],
+  },
+  {
+    sections: [
+      {
+        dotTone: 'planned',
+        title: 'Akan Dibangun · 4',
+        items: [
+          { name: 'POGS', description: 'Pregnancy Observation Global System' },
+          { name: 'CDOS', description: 'Clinical Decision Orchestration System' },
+          { name: 'TRIAGE', description: 'Severity Scoring & Predictive Triage Engine' },
+          { name: 'PREDICTION', description: 'Predictive Analytics Engine' },
+        ],
+      },
+    ],
+  },
+]
+
 export default function Portfolio() {
   const shouldReduce = useReducedMotion()
   const isMotionReady = useMotionReady()
   const mv = shouldReduce ? undefined : motionVariants
   const revealInitial = getRevealInitial(isMotionReady, shouldReduce, 'hidden')
+
+  const renderRegistryColumn = (column: RegistryColumn, columnIndex: number) => (
+    <motion.article
+      className="fi-registry-column"
+      key={columnIndex}
+      variants={mv?.fadeUp}
+      transition={shouldReduce ? { duration: 0 } : transitions.medium}
+    >
+      {column.sections.map((section) => (
+        <Fragment key={section.title}>
+          <h4 className={section.className}>
+            <span className={`dot ${section.dotTone}`}></span>
+            {section.title}
+          </h4>
+          <ul>
+            {section.items.map((item) => (
+              <li key={item.name}>
+                <strong>{item.name}</strong>
+                <small>{item.description}</small>
+              </li>
+            ))}
+          </ul>
+        </Fragment>
+      ))}
+    </motion.article>
+  )
 
   return (
     <section
@@ -112,77 +266,38 @@ export default function Portfolio() {
           variants={staggerContainer(0.18, 0.1)}
           transition={shouldReduce ? { staggerChildren: 0, delayChildren: 0 } : undefined}
         >
-          {/* AADI */}
-          <motion.article
-            className="fi-feature-card fi-feature-aadi"
-            variants={mv?.scaleReveal}
-            transition={shouldReduce ? { duration: 0 } : transitions.medium}
-            whileHover={shouldReduce ? undefined : { y: -8, transition: { duration: 0.3 } }}
-          >
-            <div className="fi-feature-copy">
-              <span>Sistem Unggulan 01</span>
-              <h3>AADI</h3>
-              <p className="fi-feature-subtitle">Kecerdasan Admisi dan Dokumentasi Otonom</p>
-              <p className="fi-feature-body-italic">
-                AADI mengumpulkan, memverifikasi, dan mendokumentasikan informasi pasien secara
-                otonom lintas sistem, sehingga gesekan saat admisi menurun dan akurasi meningkat
-                sejak awal proses.
-              </p>
-              <div className="fi-feature-status">
-                <small>Status</small>
-                <b className="is-testing">Sedang Diuji</b>
+          {featuredSystems.map((system) => (
+            <motion.article
+              className={system.articleClassName}
+              key={system.title}
+              variants={mv?.scaleReveal}
+              transition={shouldReduce ? { duration: 0 } : transitions.medium}
+              whileHover={shouldReduce ? undefined : { y: -8, transition: { duration: 0.3 } }}
+            >
+              <div className="fi-feature-copy">
+                <span>{system.label}</span>
+                <h3>{system.title}</h3>
+                <p className="fi-feature-subtitle">{system.subtitle}</p>
+                <p className={system.descriptionClassName}>{system.description}</p>
+                <div className="fi-feature-status">
+                  <small>Status</small>
+                  <b className="is-testing">Sedang Diuji</b>
+                </div>
+                <Link aria-label={`Telusuri ${system.title} di registri`} href="#registry-all-systems">
+                  Jelajahi system →
+                </Link>
               </div>
-              <Link aria-label="Telusuri AADI di registri" href="#registry-all-systems">
-                Jelajahi system →
-              </Link>
-            </div>
-            <div className="fi-feature-illustration">
-              <Image
-                alt="Tampilan sistem AADI"
-                className="fi-feature-product-image fi-feature-product-image-aadi"
-                height={520}
-                src="/aadi.png"
-                width={720}
-              />
-            </div>
-          </motion.article>
-
-          {/* Sentra Assist */}
-          <motion.article
-            className="fi-feature-card fi-feature-assist"
-            variants={mv?.scaleReveal}
-            transition={shouldReduce ? { duration: 0 } : transitions.medium}
-            whileHover={shouldReduce ? undefined : { y: -8, transition: { duration: 0.3 } }}
-          >
-            <div className="fi-feature-copy">
-              <span>Sistem Unggulan 02</span>
-              <h3>Sentra Assist</h3>
-              <p className="fi-feature-subtitle">
-                Panel samping Chrome berbasis AI untuk kelengkapan EMR
-              </p>
-              <p>
-                Sentra Assist adalah Chrome Side Panel berbasis AI yang membaca dokumen klinis,
-                melakukan ekstraksi OCR, dan menerapkan algoritma field-matching probabilistik untuk
-                membantu penyelesaian formulir EMR secara end-to-end dengan tinjauan klinisi.
-              </p>
-              <div className="fi-feature-status">
-                <small>Status</small>
-                <b className="is-testing">Sedang Diuji</b>
+              <div className={system.illustrationClassName}>
+                <Image
+                  alt={system.imageAlt}
+                  className={system.imageClassName}
+                  height={520}
+                  src={system.imageSrc}
+                  width={720}
+                />
               </div>
-              <Link aria-label="Telusuri Sentra Assist di registri" href="#registry-all-systems">
-                Jelajahi system →
-              </Link>
-            </div>
-            <div className="fi-feature-illustration fi-assist-visual fi-sentra-assist-sketch">
-              <Image
-                alt="Tampilan sistem Sentra Assist"
-                className="fi-feature-product-image fi-feature-product-image-assist"
-                height={520}
-                src="/assist.webp"
-                width={720}
-              />
-            </div>
-          </motion.article>
+            </motion.article>
+          ))}
         </motion.section>
 
         {/* Registry Proof */}
@@ -273,143 +388,7 @@ export default function Portfolio() {
             variants={staggerContainer(0.1, 0.05)}
             transition={shouldReduce ? { staggerChildren: 0, delayChildren: 0 } : undefined}
           >
-            <motion.article
-              className="fi-registry-column"
-              variants={mv?.fadeUp}
-              transition={shouldReduce ? { duration: 0 } : transitions.medium}
-            >
-              <h4>
-                <span className="dot testing"></span>Sedang Diuji · 6
-              </h4>
-              <ul>
-                <li>
-                  <strong>AADI</strong>
-                  <small>Autonomous Artificial Diagnostic Intelligence</small>
-                </li>
-                <li>
-                  <strong>Audrey</strong>
-                  <small>Voice-First Clinical Intelligence</small>
-                </li>
-                <li>
-                  <strong>Intelligence Dashboard</strong>
-                  <small>Unified Clinical Operations Platform</small>
-                </li>
-                <li>
-                  <strong>Sentra Assist</strong>
-                  <small>AI Chrome Side Panel for EMR Automation</small>
-                </li>
-                <li>
-                  <strong>Telemedicine</strong>
-                  <small>Remote Clinical Consultation</small>
-                </li>
-                <li>
-                  <strong>ReferraLink</strong>
-                  <small>Awareness-Intelligence Protocol</small>
-                </li>
-              </ul>
-            </motion.article>
-            <motion.article
-              className="fi-registry-column"
-              variants={mv?.fadeUp}
-              transition={shouldReduce ? { duration: 0 } : transitions.medium}
-            >
-              <h4>
-                <span className="dot built"></span>Sudah Dibangun · 1
-              </h4>
-              <ul>
-                <li>
-                  <strong>Med-Cognitive</strong>
-                  <small>Neural Memory Architecture for Clinical AI</small>
-                </li>
-              </ul>
-              <h4 className="mt">
-                <span className="dot inbuild"></span>Sedang Dibangun · 11
-              </h4>
-              <ul>
-                <li>
-                  <strong>MELLY</strong>
-                  <small>Hyper-Personalized Augmented Virtual Agent</small>
-                </li>
-                <li>
-                  <strong>Melinda Dashboard</strong>
-                  <small>Zero-Friction Interoperability Platform</small>
-                </li>
-                <li>
-                  <strong>Melinda Shield</strong>
-                  <small>Cognitive Cybersecurity Infrastructure</small>
-                </li>
-                <li>
-                  <strong>Autonomous Admission</strong>
-                  <small>Admission &amp; Journey Tracking</small>
-                </li>
-                <li>
-                  <strong>Smart Triage</strong>
-                  <small>Pediatric &amp; Maternal Algorithmic Assessment</small>
-                </li>
-              </ul>
-            </motion.article>
-            <motion.article
-              className="fi-registry-column"
-              variants={mv?.fadeUp}
-              transition={shouldReduce ? { duration: 0 } : transitions.medium}
-            >
-              <h4>
-                <span className="dot inbuild"></span>Pembangunan Berlanjut
-              </h4>
-              <ul>
-                <li>
-                  <strong>Proactive Care Navigator</strong>
-                  <small>Post-Partum &amp; Preventive Monitoring</small>
-                </li>
-                <li>
-                  <strong>Ambient Scribe</strong>
-                  <small>Clinical Voice-to-EMR Engine</small>
-                </li>
-                <li>
-                  <strong>Critical Alert System</strong>
-                  <small>Proactive NICU &amp; Telemetry Intelligence</small>
-                </li>
-                <li>
-                  <strong>Predictive Bed Management</strong>
-                  <small>Autonomous Turnaround Orchestration</small>
-                </li>
-                <li>
-                  <strong>Hospital management Auditor</strong>
-                  <small>Clinical Coding &amp; Claim Defense</small>
-                </li>
-                <li>
-                  <strong>Hospital Orchestrator</strong>
-                  <small>Smart Operating Room Logistics</small>
-                </li>
-              </ul>
-            </motion.article>
-            <motion.article
-              className="fi-registry-column"
-              variants={mv?.fadeUp}
-              transition={shouldReduce ? { duration: 0 } : transitions.medium}
-            >
-              <h4>
-                <span className="dot planned"></span>Akan Dibangun · 4
-              </h4>
-              <ul>
-                <li>
-                  <strong>POGS</strong>
-                  <small>Pregnancy Observation Global System</small>
-                </li>
-                <li>
-                  <strong>CDOS</strong>
-                  <small>Clinical Decision Orchestration System</small>
-                </li>
-                <li>
-                  <strong>TRIAGE</strong>
-                  <small>Severity Scoring &amp; Predictive Triage Engine</small>
-                </li>
-                <li>
-                  <strong>PREDICTION</strong>
-                  <small>Predictive Analytics Engine</small>
-                </li>
-              </ul>
-            </motion.article>
+            {registryColumns.map(renderRegistryColumn)}
           </motion.div>
           <p className="fi-registry-boundary">
             <strong>Batas klinis:</strong> Sistem Sentra dirancang sebagai pendukung keputusan,

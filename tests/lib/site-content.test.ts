@@ -16,6 +16,7 @@ describe('site content', () => {
       { id: 'expertise', label: 'Prinsip Berpikir' },
       { id: 'portfolio', label: 'Inisiatif & Sistem' },
       { id: 'story-sentra', label: 'Perjalanan' },
+      { id: 'classy-news-spotlight', label: 'Sorotan Berita' },
       { id: 'contact', label: 'Kontak' },
     ])
   })

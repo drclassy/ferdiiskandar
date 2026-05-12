@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { DossierGlanceSections, DossierIndexNav } from '@/components/DossierShared'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import {
@@ -23,13 +24,7 @@ export default function AboutPage() {
         <aside aria-label="Indeks dossier profil" className="fi-about-index">
           <div className="fi-about-index-title">Indeks Profil</div>
           <nav aria-label="Bagian profil" className="fi-about-index-nav">
-            {aboutIndexEntries.map((item) => (
-              <Link href={item.href} key={item.number}>
-                <span>{item.number}</span>
-                <strong>{item.title}</strong>
-                <em>{item.detail}</em>
-              </Link>
-            ))}
+            <DossierIndexNav entries={aboutIndexEntries} />
           </nav>
           <div className="fi-about-index-card">
             <p>
@@ -56,7 +51,7 @@ export default function AboutPage() {
               </div>
             </div>
             <aside className="fi-about-portrait-panel" aria-label="Potret founder">
-              <figure className="fi-about-portrait-frame">
+              <figure className="fi-about-portrait-frame fi-img-zoom">
                 <Image
                   alt="Portrait of dr. Ferdi Iskandar"
                   className="fi-about-portrait-image"
@@ -89,7 +84,7 @@ export default function AboutPage() {
             </div>
             <div className="fi-about-registry-grid">
               {aboutRegistryPanels.map((panel) => (
-                <article className="fi-about-registry-panel" key={panel.number}>
+                <article className="fi-about-registry-panel fi-card-lift" key={panel.number}>
                   <span>{panel.number}</span>
                   <h3>{panel.title}</h3>
                   <p>{panel.body}</p>
@@ -119,7 +114,7 @@ export default function AboutPage() {
                 <div className="fi-about-panel-label">Logika Kerja</div>
                 <div className="fi-about-principles-list">
                   {aboutPrinciples.map((principle, index) => (
-                    <div className="fi-about-principle-row" key={principle.title}>
+                    <div className="fi-about-principle-row fi-stagger-hover" key={principle.title}>
                       <span>{String(index + 1).padStart(2, '0')}</span>
                       <div>
                         <h3>{principle.title}</h3>
@@ -134,7 +129,7 @@ export default function AboutPage() {
 
           <section
             aria-labelledby="about-bridge-title"
-            className="fi-about-bridge"
+            className="fi-about-bridge fi-about-systems-bridge"
             id="about-bridge"
           >
             <div className="fi-about-bridge-copy">
@@ -143,10 +138,10 @@ export default function AboutPage() {
               <p>{aboutSystemsBridge.body}</p>
             </div>
             <div className="fi-about-bridge-actions">
-              <Link className="fi-button secondary" href={aboutSystemsBridge.fallbackHref}>
+              <Link className="fi-button secondary fi-link-draw" href={aboutSystemsBridge.fallbackHref}>
                 {aboutSystemsBridge.label}
               </Link>
-              <Link className="fi-button" href={aboutClosing.fallbackHref}>
+              <Link className="fi-button fi-link-draw" href={aboutClosing.fallbackHref}>
                 {aboutClosing.label}
               </Link>
             </div>
@@ -158,16 +153,7 @@ export default function AboutPage() {
             <strong>Sekilas</strong>
             <span>Dossier pendiri</span>
           </div>
-          {aboutGlanceSections.map((section) => (
-            <section key={section.title}>
-              <h3>{section.title}</h3>
-              <ul>
-                {section.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </section>
-          ))}
+          <DossierGlanceSections sections={aboutGlanceSections} />
           <section className="fi-about-glance-authority">
             <h3>Sinyal Otoritas</h3>
             <ul>

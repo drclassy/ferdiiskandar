@@ -7,7 +7,7 @@ export const aboutHero = {
     'Sebuah pembacaan terstruktur atas peran, cara pandang, dan postur institusional di balik kerja sistem yang mencakup perawatan, pembelajaran, pekerjaan, dan pengalaman digital publik.',
 } as const
 
-export const aboutPositioning = [
+const aboutPositioning = [
   'Pijakan klinis dipahami sebagai tanggung jawab langsung terhadap pasien dan operasional layanan, bukan sekadar kerangka konsep. Pengalaman di garis depan pengambilan keputusan—dari ruang gawat darurat hingga tata kelola rumah sakit—membentuk cara membaca risiko, prioritas, dan batas kemampuan sistem. Setiap usulan perbaikan arus kerja atau dukungan keputusan harus dapat dijelaskan dalam bahasa akuntabilitas klinis: siapa memutuskan, atas dasar sinyal apa, dan dengan mitigasi apa bila ketidakpastian tetap ada.',
   'Postur pendiri berarti menempatkan reputasi institusional dan kepercayaan publik setara dengan ambisi produk. Pembangunan kecerdasan layanan kesehatan dilakukan dengan kesadaran penuh pada regulasi, etika profesi, dan dinamika stakeholder yang tidak selaras. Komitmennya bukan pada narasi pertumbuhan semata, melainkan pada konsistensi tata kelola, transparansi batas kemampuan model, dan kemampuan organisasi untuk belajar dari insiden tanpa mengorbankan keselamatan pasien.',
   'Arsitektur sistem dirancang agar teknologi memperkuat penilaian manusia: menyajikan konteks, mengurangi beban kognitif berulang, dan menjaga jejak audit yang dapat ditinjau ulang. Integrasi antarmuka, alur data, dan kebijakan akses disusun sebagai satu permukaan tanggung jawab, bukan kumpulan fitur yang bersaing merebut perhatian klinisi. Tujuannya jelas: kejelasan sinyal, alur kerja yang tenang, dan titik intervensi manusia yang eksplisit pada setiap titik kritis.',

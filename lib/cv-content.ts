@@ -62,8 +62,30 @@ export const cvExperience: ExperienceItem[] = [
       'Membangun sistem operasi untuk layanan kesehatan preventif. Sentra mengembangkan sistem trajektori klinis, operasi rumah sakit yang berangkat dari cara kerja AI sejak awal, dan pendukung keputusan klinis generasi berikutnya yang berakar pada 12 tahun kepemimpinan rumah sakit langsung dan praktik klinis lini depan. Perusahaan ini menjadi respons institusional langsung atas kerentanan sistemik yang terlihat dalam operasi rumah sakit.',
   },
   {
-    id: 'apsai-board-member',
+    id: 'indonesia-ai-hub-member',
     number: '02',
+    role: 'Member',
+    organization: 'Indonesia Artificial Intelligence HUB',
+    displayTitle: 'Member of Indonesia Artificial Intelligence HUB',
+    years: '2026',
+    status: 'current',
+    description:
+      'Bergabung sebagai anggota Indonesia Artificial Intelligence HUB pada 2026 sebagai bagian dari jejaring pengembangan AI nasional, pertukaran pengetahuan, dan kolaborasi lintas sektor.',
+  },
+  {
+    id: 'data-science-indonesia-member',
+    number: '03',
+    role: 'Member',
+    organization: 'Data Science Indonesia',
+    displayTitle: 'Member of Data Science Indonesia',
+    years: '2026',
+    status: 'current',
+    description:
+      'Bergabung sebagai anggota Data Science Indonesia pada 2026 untuk memperkuat keterlibatan profesional dalam ekosistem data science, AI, dan pembelajaran komunitas berbasis praktik.',
+  },
+  {
+    id: 'apsai-board-member',
+    number: '04',
     role: 'Pengurus',
     organization: 'Asosiasi Perusahaan Sahabat Anak Indonesia (APSAI)',
     displayTitle: 'Pengurus Asosiasi Perusahaan Sahabat Anak Indonesia (APSAI)',
@@ -74,7 +96,7 @@ export const cvExperience: ExperienceItem[] = [
   },
   {
     id: 'idi-kediri-bhp2a',
-    number: '03',
+    number: '05',
     role: 'Pengurus Biro Hukum, Pembinaan dan Pembelaan Anggota (BHP2A)',
     organization: 'IDI Kota Kediri',
     years: '2023 — Saat ini',
@@ -84,7 +106,7 @@ export const cvExperience: ExperienceItem[] = [
   },
   {
     id: 'q-sehat-group',
-    number: '04',
+    number: '06',
     role: 'Q-Sehat Group',
     organization: 'Q-Sehat Group',
     years: '2022',
@@ -94,7 +116,7 @@ export const cvExperience: ExperienceItem[] = [
   },
   {
     id: 'primary-care-definitive-doctor',
-    number: '05',
+    number: '07',
     role: 'Dokter Definitif Layanan Primer',
     organization: 'Layanan Primer',
     years: '2021 — Saat ini',
@@ -104,7 +126,7 @@ export const cvExperience: ExperienceItem[] = [
   },
   {
     id: 'rsia-melinda-commissioner',
-    number: '06',
+    number: '08',
     role: 'Komisaris',
     organization: 'RSIA Melinda DHAI',
     years: '2019 — 2021',
@@ -114,7 +136,7 @@ export const cvExperience: ExperienceItem[] = [
   },
   {
     id: 'rsia-melinda',
-    number: '07',
+    number: '09',
     role: 'Direktur Utama',
     organization: 'RSIA Melinda DHAI',
     years: '2016 — Saat ini',
@@ -124,7 +146,7 @@ export const cvExperience: ExperienceItem[] = [
   },
   {
     id: 'er-clinician',
-    number: '08',
+    number: '10',
     role: 'Klinisi Instalasi Gawat Darurat',
     organization: 'RSUD Koesnadi Bondowoso · RSUD Moch. Saleh Probolinggo · RSUD Ibnu Sina Gresik',
     years: '2014 — 2016',
@@ -134,7 +156,7 @@ export const cvExperience: ExperienceItem[] = [
   },
   {
     id: 'ivao-executive-committee',
-    number: '09',
+    number: '11',
     role: 'Executive Committee',
     organization: 'The International Virtual Aviation Organisation',
     years: '2008 — 2019',
@@ -144,7 +166,7 @@ export const cvExperience: ExperienceItem[] = [
   },
   {
     id: 'ivao-npo-belgium-board-governors',
-    number: '10',
+    number: '12',
     role: 'Board of Governors',
     organization: 'IVAO NPO Belgium',
     years: '2008 — 2019',
@@ -197,7 +219,7 @@ export const cvEducation: EducationItem[] = [
   },
 ]
 
-export type PublicationStatus = 'in-preparation' | 'under-review' | 'published'
+export type PublicationStatus = 'forthcoming' | 'in-preparation' | 'under-review' | 'published'
 
 export type PublicationItem = {
   id: string
@@ -211,6 +233,17 @@ export type PublicationItem = {
 }
 
 export const cvPublications: PublicationItem[] = [
+  {
+    id: 'culturally-grounded-prompt-engineering-indonesian-contexts',
+    number: 'PUB-00',
+    title: 'Culturally Grounded Prompt Engineering for Indonesian Contexts',
+    subtitle: 'Forthcoming',
+    status: 'forthcoming',
+    year: 'Akan Datang',
+    tags: ['Prompt Engineering', 'Indonesian Contexts', 'Cultural AI', 'Human-AI Interaction'],
+    abstract:
+      'Riset yang sedang disiapkan tentang rekayasa prompt yang berakar pada konteks budaya Indonesia, dengan fokus pada cara bahasa, norma sosial, nilai lokal, dan struktur komunikasi memengaruhi kualitas interaksi manusia dengan sistem AI.',
+  },
   {
     id: 'clinical-trajectory-algorithm-kaggle',
     number: 'PUB-01',
@@ -240,77 +273,106 @@ export const cvPublications: PublicationItem[] = [
     abstract:
       'Analisis integratif atas Digital Twin Brain dan Neuro-Symbolic AI untuk arsitektur pendukung keputusan klinis generasi berikutnya. Makalah ini mengusulkan perluasan TCMA ke arsitektur neurosimbolik yang mengintegrasikan primitif sinaptik, TAN termodulasi asetilkolin, dan dinamika temporal spiking. Prototipe simulasi pada 100 pasien urban menghasilkan akurasi 94% dan explainability 92%. Arah risetnya memprediksi pendukung keputusan klinis setara manusia pada 2027.',
   },
+  {
+    id: 'in-vitro-surrogate-mother-thesis',
+    number: 'PUB-03',
+    title: 'Fertilisasi In Vitro dari Sudut Pandang Surrogate Mother',
+    subtitle: 'Tesis Magister Kenotariatan',
+    status: 'published',
+    year: '2008',
+    tags: ['Hukum Kesehatan', 'Fertilisasi In Vitro', 'Surrogate Mother', 'Etika Medis'],
+    abstract:
+      'Tesis akademik yang membahas fertilisasi in vitro dari sudut pandang surrogate mother, dengan perhatian pada dimensi hukum, etik, hak reproduksi, dan tanggung jawab institusional dalam teknologi medis reproduksi.',
+  },
 ]
 
 export const cvCredentials = [
-  { code: 'dr.', label: 'Dokter', source: 'Universitas Wijaya Kusuma' },
-  { code: 'SH', label: 'Sarjana Hukum', source: 'Universitas Ubaya' },
-  { code: 'MKN', label: 'Magister Kenotariatan', source: 'Universitas Ubaya' },
+  { code: 'dr.', label: 'Dokter', source: 'Universitas Wijaya Kusuma', scope: 'national' },
+  { code: 'SH', label: 'Sarjana Hukum', source: 'Universitas Ubaya', scope: 'national' },
+  { code: 'MKN', label: 'Magister Kenotariatan', source: 'Universitas Ubaya', scope: 'national' },
   {
     code: 'GAIPC™',
     label: 'Generative AI Professional Certification',
     source: '2026',
+    scope: 'international',
   },
   {
     code: 'I42001F™',
     label: 'ISO/IEC 42001 Foundation Professional Certification',
     source: 'CertiProf · 2026',
+    scope: 'international',
   },
   {
     code: 'APEPC™',
     label: 'AI Prompt Engineering Professional Certification',
     source: 'CertiProf · 2026',
+    scope: 'international',
   },
   {
     code: 'CAIPC®',
     label: 'Artificial Intelligence Professional Certificate',
     source: 'CertiProf · 2026',
+    scope: 'international',
   },
   {
     code: 'CAIEC™',
     label: 'Artificial Intelligence Expert Certificate',
     source: 'CertiProf · 2026',
+    scope: 'international',
   },
   {
     code: 'AIGPC™',
     label: 'AI Governance Professional Certification',
     source: '2026',
+    scope: 'international',
   },
   {
     code: 'AIMPC™',
     label: 'AI Management Professional Certification',
     source: '2026',
+    scope: 'international',
   },
-  { code: 'CLM', label: 'Certified Leadership Mastery', source: 'Sertifikasi profesional' },
+  {
+    code: 'CLM',
+    label: 'Certified Leadership Mastery',
+    source: 'Sertifikasi profesional',
+    scope: 'national',
+  },
   {
     code: 'CMDC',
     label: 'Certified Medical Doctor Consultant',
     source: 'Sertifikasi profesional',
+    scope: 'national',
   },
   {
     code: 'C.AIS',
     label: 'Certified Artificial Intelligence Specialist',
     source: 'AI · 2025',
+    scope: 'national',
   },
   {
     code: 'CDS',
     label: 'Certified Data Scientist',
     source: 'AI · 2025',
+    scope: 'national',
   },
   {
     code: 'MLE',
     label: 'Machine Learning Engineer',
     source: 'AI · 2025',
+    scope: 'national',
   },
   {
     code: 'Google Dev',
     label: 'Premium Tier Google Developer Program',
     source: 'Program · 2025',
+    scope: 'international',
   },
   {
     code: 'Minimax AI',
     label: 'Part of Minimax Artificial Intelligence Developer Program',
     source: 'Program · 2025',
+    scope: 'international',
   },
 ] as const
 
@@ -323,6 +385,8 @@ export const cvGlanceSections = [
     title: 'Peran Aktif',
     items: [
       'Founder & CEO, Sentra AI',
+      'Member, Indonesia Artificial Intelligence HUB',
+      'Member, Data Science Indonesia',
       'Direktur Utama, RSIA Melinda DHAI',
       'Dokter Definitif Layanan Primer',
       'Pengurus APSAI',
@@ -344,7 +408,12 @@ export const cvGlanceSections = [
   },
   {
     title: 'Riset',
-    items: ['Clinical Trajectory Algorithm — Published at Kaggle', 'TCMA — Released'],
+    items: [
+      'Clinical Trajectory Algorithm — Published at Kaggle',
+      'Culturally Grounded Prompt Engineering — Akan Datang',
+      'TCMA — Released',
+      'Tesis Fertilisasi In Vitro — Surrogate Mother',
+    ],
   },
   {
     title: 'Latar Belakang',

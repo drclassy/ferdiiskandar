@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { DossierGlanceSections, DossierIndexNav } from '@/components/DossierShared'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import {
@@ -27,13 +28,7 @@ export default function NotesPage() {
         <aside aria-label="Indeks arsip catatan" className="fi-notes-index">
           <div className="fi-notes-index-title">Indeks Catatan</div>
           <nav aria-label="Bagian catatan" className="fi-notes-index-nav">
-            {notesIndexEntries.map((item) => (
-              <Link href={item.href} key={item.number}>
-                <span>{item.number}</span>
-                <strong>{item.title}</strong>
-                <em>{item.detail}</em>
-              </Link>
-            ))}
+            <DossierIndexNav entries={notesIndexEntries} />
           </nav>
           <div className="fi-notes-index-card">
             <p>
@@ -238,16 +233,7 @@ export default function NotesPage() {
             <strong>Sekilas</strong>
             <span>Catatan</span>
           </div>
-          {notesGlanceSections.map((section) => (
-            <section key={section.title}>
-              <h3>{section.title}</h3>
-              <ul>
-                {section.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </section>
-          ))}
+          <DossierGlanceSections sections={notesGlanceSections} />
         </aside>
       </main>
       <Footer />

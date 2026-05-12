@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import AbbyWidget from '@/components/AbbyWidget'
@@ -63,6 +64,15 @@ export default function HomePage() {
             <article className="fi-home-preface-card">
               <span>Basis & Fokus</span>
               <strong>Kediri, Jawa Timur, Indonesia</strong>
+              <figure className="fi-home-preface-card-visual" aria-label="Simpang Lima Gumul Kediri">
+                <Image
+                  alt="Simpang Lima Gumul Kediri"
+                  className="fi-home-preface-card-visual-image"
+                  height={400}
+                  src="/slg.png"
+                  width={600}
+                />
+              </figure>
               <p>
                 Berfokus pada pengembangan healthcare AI, clinical decision support, dan AI-native
                 healthcare operations untuk mendukung sistem kesehatan yang lebih terkoordinasi,
@@ -71,22 +81,22 @@ export default function HomePage() {
             </article>
           </div>
         </section>
-        <ScrollReveal>
+        <ScrollReveal direction="left">
           <Impact />
         </ScrollReveal>
-        <ScrollReveal>
+        <ScrollReveal direction="scale">
           <Expertise />
         </ScrollReveal>
-        <ScrollReveal>
+        <ScrollReveal direction="right">
           <Portfolio />
         </ScrollReveal>
-        <ScrollReveal>
+        <ScrollReveal direction="blur">
           <StoryOfSentra />
         </ScrollReveal>
-        <ScrollReveal>
+        <ScrollReveal direction="up" delay={0.1}>
           <ClassyNewsSpotlight />
         </ScrollReveal>
-        <ScrollReveal>
+        <ScrollReveal direction="fade" delay={0.15}>
           <Contact />
         </ScrollReveal>
         <AbbyWidget />

@@ -6,7 +6,7 @@ import { buildPageMetadata } from '@/lib/site-metadata'
 export const metadata = buildPageMetadata({
   title: 'Classy News',
   description:
-    'Halaman editorial khusus Classy News di dalam ferdiiskandar: signal AI, open-source watch, dan jembatan terkurasi ke notes, works, speaking, serta contact surface.',
+    'Halaman editorial khusus Classy News di Ferdiiskandar: sinyal AI, pemantauan open-source, dan jembatan kurasi ke catatan, karya, speaking, serta kanal kontak.',
   pathname: '/classy-news',
 })
 

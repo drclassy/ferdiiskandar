@@ -79,7 +79,7 @@ export default function StoryOfSentra() {
     <section aria-labelledby="story-sentra-title" className="fi-section" id="story-sentra">
       <article className="fi-story">
         <header className="fi-story-head">
-          <SectionNumberMark number="05" />
+          <SectionNumberMark number="04" />
           <div className="fi-story-headline">
             <div className="fi-story-headline-copy">
               <div className="fi-kicker">Kisah Sentra</div>

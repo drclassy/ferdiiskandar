@@ -282,6 +282,14 @@ function ThinkingTerminal() {
         )
       }
 
+      const typeTextRange = async (fromIndex: number) => {
+        for (let i = fromIndex; i < targetText.length; i += 1) {
+          if (cancelled) return
+          setCurrentLineText(targetText.slice(0, i + 1))
+          await sleep(getTerminalDelay(targetText[i] ?? '', i, baseSpeed))
+        }
+      }
+
       if (typoText) {
         for (let i = 0; i < typoText.length; i += 1) {
           if (cancelled) return
@@ -300,17 +308,9 @@ function ThinkingTerminal() {
 
         await sleep(140)
 
-        for (let i = resumeIndex; i < targetText.length; i += 1) {
-          if (cancelled) return
-          setCurrentLineText(targetText.slice(0, i + 1))
-          await sleep(getTerminalDelay(targetText[i] ?? '', i, baseSpeed))
-        }
+        await typeTextRange(resumeIndex)
       } else {
-        for (let i = 0; i < targetText.length; i += 1) {
-          if (cancelled) return
-          setCurrentLineText(targetText.slice(0, i + 1))
-          await sleep(getTerminalDelay(targetText[i] ?? '', i, baseSpeed))
-        }
+        await typeTextRange(0)
       }
 
       if (cancelled) return

@@ -1,6 +1,7 @@
 import { Fragment_Mono, Inter, JetBrains_Mono } from 'next/font/google'
 import type { ReactNode } from 'react'
 
+import SmoothScrollProvider from '@/components/SmoothScrollProvider'
 import { buildSiteMetadata } from '@/lib/site-metadata'
 import './globals.css'
 
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <a className="fi-skip-link" href="#main-content">
           Skip to content
         </a>
+        <SmoothScrollProvider />
         {children}
       </body>
     </html>

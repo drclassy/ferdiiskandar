@@ -10,13 +10,13 @@ import { primaryNav } from '@/lib/site-content'
 import { useMotionReady } from '@/lib/use-motion-ready'
 
 const speakingNav = [
-  { label: 'About', href: '/about' },
-  { label: 'Works', href: '/works' },
-  { label: 'Notes', href: '/notes' },
-  { label: 'News', href: '/classy-news' },
+  { label: 'Profil', href: '/about' },
+  { label: 'Karya', href: '/works' },
+  { label: 'Catatan', href: '/notes' },
+  { label: 'Berita', href: '/classy-news' },
   { label: 'Speaking', href: '/speaking' },
   { label: 'CV', href: '/cv' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Kontak', href: '/#contact' },
 ] as const
 
 export default function Navbar() {
@@ -75,7 +75,7 @@ export default function Navbar() {
                 {navItems.map((item) => (
                   <Link
                     className={[
-                      'fi-nav-editorial-link',
+                      'fi-nav-editorial-link fi-magnetic-btn fi-nav-slide fi-focus-ring',
                       isActive(item.href) ? 'is-active' : '',
                       item.label === (isSpeakingPage ? 'Contact' : 'Kontak') ? 'is-contact' : '',
                     ]

@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
+import { DossierGlanceSections, DossierIndexNav } from '@/components/DossierShared'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import { cvCredentials } from '@/lib/cv-content'
@@ -28,13 +28,7 @@ export default function SpeakingPage() {
         <aside aria-label="Speaking index" className="fi-speaking-index">
           <div className="fi-speaking-index-title">Speaking Index</div>
           <nav aria-label="Speaking sections" className="fi-speaking-index-nav">
-            {speakingIndexEntries.map((item) => (
-              <Link href={item.href} key={item.number}>
-                <span>{item.number}</span>
-                <strong>{item.title}</strong>
-                <em>{item.detail}</em>
-              </Link>
-            ))}
+            <DossierIndexNav entries={speakingIndexEntries} />
           </nav>
           <div className="fi-speaking-index-card">
             <p>
@@ -281,16 +275,7 @@ export default function SpeakingPage() {
             <strong>At a Glance</strong>
             <span>Speaker profile</span>
           </div>
-          {speakingGlanceSections.map((section) => (
-            <section key={section.title}>
-              <h3>{section.title}</h3>
-              <ul>
-                {section.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </section>
-          ))}
+          <DossierGlanceSections sections={speakingGlanceSections} />
         </aside>
       </main>
       <Footer />
