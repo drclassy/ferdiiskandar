@@ -455,6 +455,16 @@ The architecture is intentionally bounded: **the website explains, guides, and r
 <td>Classy News editorial route</td>
 </tr>
 <tr>
+<td><code>/systems</code></td>
+<td>Public page · Planned</td>
+<td>Systems and builds catalogue</td>
+</tr>
+<tr>
+<td><code>/contact</code></td>
+<td>Public page · Planned</td>
+<td>Contact and collaboration surface</td>
+</tr>
+<tr>
 <td><code>/api/abby</code></td>
 <td>API</td>
 <td>Main Abby assistant endpoint</td>
@@ -1154,4 +1164,3 @@ MIT License — see [`LICENSE`](LICENSE) for details.
   <b>Architected and built by dr Classy.</b><br />
   <sub>Founder dossier infrastructure · Abby AI Assistant · Sentra Artificial Intelligence ecosystem.</sub>
 </p>
-
