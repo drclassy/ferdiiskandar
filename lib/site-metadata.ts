@@ -17,9 +17,10 @@ const SITE_ICONS = {
   apple: '/apple-icon.png',
 }
 const SITE_OG_IMAGE = {
-  url: '/og-image.png',
-  width: 1672,
-  height: 941,
+  url: '/og-image.jpg',
+  width: 1200,
+  height: 630,
+  type: 'image/jpeg',
   alt: 'dr. Ferdi Iskandar — Augmented Intelligence Architect',
 }
 
