@@ -8,13 +8,11 @@
 <td valign="top">
 
 This repository contains the personal website for **dr Ferdi Iskandar** — a physician, hospital CEO, and founder of Sentra Artificial Intelligence.
-
 The site is intentionally structured as a **founder dossier** rather than a generic personal landing page:
 - An editorial homepage with publication-grade hierarchy
 - Curated public routes (about, works, notes, speaking, CV, news)
 - An integrated AI assistant named **Abby** that helps visitors understand the founder's profile, journey, and collaboration surfaces
-
-Abby is the primary AI experience. A legacy chat endpoint (powered by NVIDIA) remains available as a secondary path.
+- Abby is the primary AI experience. A legacy chat endpoint (powered by NVIDIA) remains available as a secondary path.
 
 </td>
 </tr>
