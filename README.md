@@ -1,13 +1,25 @@
-# dr Ferdi Iskandar Founder Website + Abby AI Assistant
+## Overview
 
-![Status](https://img.shields.io/badge/status-active-brightgreen?style=flat-square)
-![Version](https://img.shields.io/badge/version-0.2.0-orange?style=flat-square)
-![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-![Next.js](https://img.shields.io/badge/next.js-15.5.15-black?style=flat-square&logo=next.js&logoColor=white)
-![React](https://img.shields.io/badge/react-19.x-149eca?style=flat-square&logo=react&logoColor=white)
-![Node](https://img.shields.io/badge/node-%3E%3D22.x-339933?style=flat-square&logo=node.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/typescript-5.x-3178c6?style=flat-square&logo=typescript&logoColor=white)
-![Vitest](https://img.shields.io/badge/vitest-2.x-729b11?style=flat-square&logo=vitest&logoColor=white)
+<table>
+<tr>
+<td valign="middle" width="180">
+  <img src=".github/abyss.png" alt="The Abyss" width="160" />
+</td>
+<td valign="top">
+
+The Abyss is the current engineering workspace for Sentra's healthcare,
+academic, community, corporate, platform, and prototype products. It contains
+active applications, shared AI engines, shared data and design packages,
+tooling, infrastructure definitions, governance rules, and LangFlow flow
+definitions in a single pnpm workspace.
+
+This README is reality-first. It reflects the repository as it exists now in
+`pnpm-workspace.yaml` and the actual folder tree. It is not a historical
+brochure, and it does not hide prototype, legacy, or under-retirement surfaces.
+
+</td>
+</tr>
+</table>
 
 > Editorial public website for dr Ferdi Iskandar, with an integrated AI assistant named Abby — structured as a founder dossier, not a generic landing page.
 
