@@ -7,7 +7,7 @@
 </td>
 <td width="64%" valign="middle">
 
-# dr Ferdi Iskandar Website + Abby AI Assistant
+# dr Classy - Abby Experiment
 
 ### Editorial Founder Website · Personal AI Assistant · Public Profile Infrastructure
 
