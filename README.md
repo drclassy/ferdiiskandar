@@ -7,15 +7,14 @@
 </td>
 <td valign="top">
 
-The Abyss is the current engineering workspace for Sentra's healthcare,
-academic, community, corporate, platform, and prototype products. It contains
-active applications, shared AI engines, shared data and design packages,
-tooling, infrastructure definitions, governance rules, and LangFlow flow
-definitions in a single pnpm workspace.
+This repository contains the personal website for **dr Ferdi Iskandar** — a physician, hospital CEO, and founder of Sentra Artificial Intelligence.
 
-This README is reality-first. It reflects the repository as it exists now in
-`pnpm-workspace.yaml` and the actual folder tree. It is not a historical
-brochure, and it does not hide prototype, legacy, or under-retirement surfaces.
+The site is intentionally structured as a **founder dossier** rather than a generic personal landing page:
+- An editorial homepage with publication-grade hierarchy
+- Curated public routes (about, works, notes, speaking, CV, news)
+- An integrated AI assistant named **Abby** that helps visitors understand the founder's profile, journey, and collaboration surfaces
+
+Abby is the primary AI experience. A legacy chat endpoint (powered by NVIDIA) remains available as a secondary path.
 
 </td>
 </tr>
