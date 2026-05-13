@@ -30,7 +30,6 @@ export default function Hero() {
             motionReady={isMotionReady}
           >
             <div className="fi-hero-headline-group">
-              <p className="fi-hero-profile-intersection">Scientia ad societatem.</p>
               <h1 id="hero-title" className="fi-hero-headline">
                 <span className="fi-hero-headline-line fi-enter-word fi-enter-word-1">
                   Physician.

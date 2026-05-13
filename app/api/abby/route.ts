@@ -22,6 +22,7 @@ interface ProviderConfig {
   baseUrl: string
   apiKey: string
   model: string
+  extraHeaders?: Record<string, string>
 }
 
 const ERR_CONFIG = 'Konfigurasi server tidak lengkap.'
@@ -30,6 +31,23 @@ const isDev = process.env.NODE_ENV === 'development'
 function resolveProvider(): ProviderConfig | { error: string } {
   const provider = (process.env.AI_PROVIDER ?? 'deepseek').toLowerCase()
   const model = process.env.ABBY_MODEL ?? 'deepseek-chat'
+
+  if (provider === 'openrouter') {
+    const apiKey = process.env.OPENROUTER_API_KEY
+    if (!apiKey)
+      return {
+        error: isDev ? 'Missing OPENROUTER_API_KEY for AI_PROVIDER=openrouter' : ERR_CONFIG,
+      }
+    return {
+      baseUrl: process.env.OPENROUTER_BASE_URL ?? 'https://openrouter.ai/api/v1',
+      apiKey,
+      model: process.env.ABBY_MODEL ?? 'deepseek/deepseek-v4-flash',
+      extraHeaders: {
+        'HTTP-Referer': process.env.OPENROUTER_SITE_URL ?? 'https://ferdiiskandar.com',
+        'X-Title': process.env.OPENROUTER_APP_NAME ?? 'Abby by dr Classy',
+      },
+    }
+  }
 
   if (provider === 'openai') {
     const apiKey = process.env.OPENAI_API_KEY
@@ -171,6 +189,7 @@ export async function POST(request: NextRequest) {
       headers: {
         Authorization: `Bearer ${PROVIDER.apiKey}`,
         'Content-Type': 'application/json',
+        ...(PROVIDER.extraHeaders ?? {}),
       },
       body: JSON.stringify({
         model: PROVIDER.model,

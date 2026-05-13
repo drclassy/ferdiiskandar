@@ -1,4 +1,4 @@
-import { Fragment_Mono, Inter, JetBrains_Mono } from 'next/font/google'
+import { Fragment_Mono, Geist, Inter, JetBrains_Mono } from 'next/font/google'
 import type { ReactNode } from 'react'
 
 import SmoothScrollProvider from '@/components/SmoothScrollProvider'
@@ -24,13 +24,19 @@ const jetBrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
 })
 
+const geist = Geist({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-geist',
+})
+
 export const metadata = buildSiteMetadata()
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="id"
-      className={`${inter.variable} ${fragmentMono.variable} ${jetBrainsMono.variable}`}
+      className={`${inter.variable} ${fragmentMono.variable} ${jetBrainsMono.variable} ${geist.variable}`}
       data-theme="light"
       suppressHydrationWarning
     >
