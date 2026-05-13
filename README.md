@@ -1,3 +1,14 @@
+# dr Ferdi Iskandar Website + Abby AI Assistant
+
+![Status](https://img.shields.io/badge/status-active-brightgreen?style=flat-square)
+![Version](https://img.shields.io/badge/version-0.2.0-orange?style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
+![Next.js](https://img.shields.io/badge/next.js-15.5.15-black?style=flat-square&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/react-19.x-149eca?style=flat-square&logo=react&logoColor=white)
+![Node](https://img.shields.io/badge/node-%3E%3D22.x-339933?style=flat-square&logo=node.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-5.x-3178c6?style=flat-square&logo=typescript&logoColor=white)
+![Vitest](https://img.shields.io/badge/vitest-2.x-729b11?style=flat-square&logo=vitest&logoColor=white)
+
 ## Overview
 
 <table>
