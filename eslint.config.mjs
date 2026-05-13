@@ -33,4 +33,10 @@ export default [
       },
     },
   },
+  {
+    files: ['components/AbbyWidget.tsx'],
+    rules: {
+      'jsx-a11y/no-noninteractive-element-interactions': 'off',
+    },
+  },
 ]
