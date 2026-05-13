@@ -1,17 +1,18 @@
 import sitemap from '@/app/sitemap'
 
 describe('sitemap', () => {
-  it('exposes the current public routes', () => {
+  it('lists the public editorial routes on the production domain', () => {
     const entries = sitemap()
+    const urls = entries.map((entry) => entry.url)
 
-    expect(entries.map((entry) => entry.url)).toEqual([
-      'http://localhost:3000',
-      'http://localhost:3000/about',
-      'http://localhost:3000/works',
-      'http://localhost:3000/notes',
-      'http://localhost:3000/classy-news',
-      'http://localhost:3000/speaking',
-      'http://localhost:3000/cv',
+    expect(urls).toEqual([
+      'https://ferdiiskandar.com',
+      'https://ferdiiskandar.com/about',
+      'https://ferdiiskandar.com/works',
+      'https://ferdiiskandar.com/notes',
+      'https://ferdiiskandar.com/classy-news',
+      'https://ferdiiskandar.com/speaking',
+      'https://ferdiiskandar.com/cv',
     ])
   })
 })

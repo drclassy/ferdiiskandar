@@ -8,8 +8,34 @@ type PageMetadataInput = {
   pathname: string
 }
 
+const DEFAULT_SITE_URL = 'https://ferdiiskandar.com'
+const SITE_ICONS = {
+  icon: [
+    { url: '/favicon.ico', sizes: 'any' },
+    { url: '/icon.png', type: 'image/png' },
+  ],
+  apple: '/apple-icon.png',
+}
+const SITE_OG_IMAGE = {
+  url: '/og-image.png',
+  width: 1672,
+  height: 941,
+  alt: 'dr. Ferdi Iskandar — Augmented Intelligence Architect',
+}
+
+function normalizeSiteUrl(siteUrl: string | undefined): string {
+  const candidate = siteUrl?.trim() || DEFAULT_SITE_URL
+
+  try {
+    const parsedUrl = new URL(candidate)
+    return parsedUrl.toString().replace(/\/$/, '')
+  } catch {
+    return DEFAULT_SITE_URL
+  }
+}
+
 export function getSiteUrl() {
-  return process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  return normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL)
 }
 
 export function buildPageMetadata({ title, description, pathname }: PageMetadataInput): Metadata {
@@ -19,6 +45,10 @@ export function buildPageMetadata({ title, description, pathname }: PageMetadata
     title: siteTitle,
     description,
     metadataBase: new URL(getSiteUrl()),
+    alternates: {
+      canonical: pathname,
+    },
+    icons: SITE_ICONS,
     openGraph: {
       type: 'website',
       locale: 'id_ID',
@@ -26,11 +56,13 @@ export function buildPageMetadata({ title, description, pathname }: PageMetadata
       description,
       url: pathname,
       siteName: siteIdentity.shortName,
+      images: [SITE_OG_IMAGE],
     },
     twitter: {
       card: 'summary_large_image',
       title: siteTitle,
       description,
+      images: [SITE_OG_IMAGE.url],
     },
   }
 }
@@ -44,6 +76,10 @@ export function buildSiteMetadata(): Metadata {
     title,
     description,
     metadataBase: new URL(getSiteUrl()),
+    alternates: {
+      canonical: '/',
+    },
+    icons: SITE_ICONS,
     openGraph: {
       type: 'website',
       locale: 'id_ID',
@@ -51,11 +87,13 @@ export function buildSiteMetadata(): Metadata {
       description,
       url: '/',
       siteName: siteIdentity.shortName,
+      images: [SITE_OG_IMAGE],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: [SITE_OG_IMAGE.url],
     },
   }
 }
