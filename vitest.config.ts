@@ -15,6 +15,12 @@ export default defineConfig({
     },
     coverage: {
       reporter: ['text', 'html'],
+      include: [
+        'app/sitemap.ts',
+        'lib/classy-news-content.ts',
+        'lib/site-content.ts',
+        'lib/site-metadata.ts',
+      ],
       thresholds: {
         lines: 80,
         functions: 80,
