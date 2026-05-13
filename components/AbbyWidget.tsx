@@ -276,6 +276,7 @@ export default function AbbyWidget() {
           className="abby-drawer"
           role="dialog"
           aria-label="Abby — Asisten AI pribadi dr Ferdi Iskandar"
+          tabIndex={-1}
           onKeyDown={handleKeyDown}
           onWheel={stopPageScroll}
           onWheelCapture={stopPageScroll}
