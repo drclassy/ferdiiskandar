@@ -1,6 +1,7 @@
 import { Fragment_Mono, Geist, Inter, JetBrains_Mono } from 'next/font/google'
 import type { ReactNode } from 'react'
 
+import { Analytics } from '@vercel/analytics/next'
 import SmoothScrollProvider from '@/components/SmoothScrollProvider'
 import { buildSiteMetadata } from '@/lib/site-metadata'
 import './globals.css'
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </a>
         <SmoothScrollProvider />
         {children}
+        <Analytics />
       </body>
     </html>
   )
